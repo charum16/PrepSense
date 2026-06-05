@@ -9,13 +9,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 def chat(prompt, temperature=0.7, max_tokens=500):
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        messages=[
-    {
-        "role": "system",
-        "content": "You are a technical interviewer for top tech companies. When the user gives you a topic, ask them one clear interview question on that topic. Be concise and professional."
-    },
-    {"role": "user", "content": prompt}],
-
+        messages=[{"role": "user", "content": prompt}],
         temperature=temperature,
         max_tokens=max_tokens,
     )
@@ -32,10 +26,3 @@ while True:
 
     response = chat(user_input)
     print(f"AI: {response}\n")
-
-print("\n--- Temperature experiment ---")
-print("LOW temperature (0.1):")
-print(chat("Explain what an LLM is", temperature=0.1))
-
-print("\nHIGH temperature (1.5):")
-print(chat("Explain what an LLM is", temperature=1.5))
