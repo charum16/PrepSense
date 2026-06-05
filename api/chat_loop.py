@@ -33,9 +33,3 @@ while True:
     response = chat(user_input)
     print(f"AI: {response}\n")
 
-print("\n--- Temperature experiment ---")
-print("LOW temperature (0.1):")
-print(chat("Explain what an LLM is", temperature=0.1))
-
-print("\nHIGH temperature (1.5):")
-print(chat("Explain what an LLM is", temperature=1.5))
