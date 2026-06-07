@@ -1,0 +1,37 @@
+Amazon Software Development Engineer
+
+We are looking for a Software Development Engineer to join our team. You will design and build scalable distributed systems that serve millions of customers. Strong fundamentals in data structures, algorithms, and system design are required. You will demonstrate leadership principles especially Dive Deep and Deliver Results. Ownership is key — you are expected to own problems end to end, from design to deployment to monitoring.
+
+Required: 2+ years of experience with at least one programming language (Python, Java, C++). Experience with distributed systems, microservices, and cloud platforms (AWS preferred). Strong problem solving and communication skills.
+
+---
+
+Google Software Engineer
+
+We are hiring Software Engineers passionate about building reliable, scalable systems. You will work on large-scale infrastructure serving billions of users. Strong computer science fundamentals are essential. We value clean, testable, maintainable code and engineers who can think about reliability and performance at scale.
+
+Required: Expertise in system architecture. Strong coding skills in Python, Java, or C++. Experience with large-scale data processing. Ability to work cross-functionally with product and design teams.
+
+---
+
+Meta Product Manager
+
+Define the product vision and roadmap for consumer-facing features. Work cross-functionally with engineering, design, and data science to ship high-impact products. Analyze product metrics and user research to drive decisions. Communicate clearly with stakeholders at all levels.
+
+Required: 3+ years of PM experience. Strong analytical skills — comfortable with SQL and A/B testing. Experience defining KPIs and measuring product success. Excellent written and verbal communication.
+
+---
+
+Data Engineer - AWS
+
+Build and maintain scalable data pipelines that power business intelligence and ML systems. Design data models and ETL processes. Work with Airflow, dbt, Spark, and cloud platforms. Ensure data quality, reliability, and performance at scale.
+
+Required: Proficiency in SQL and Python. Experience with Spark and distributed data processing. Familiarity with AWS services (S3, Redshift, Glue). Strong understanding of data modeling and pipeline architecture.
+
+---
+
+Machine Learning Engineer - Google DeepMind
+
+Design, train, and deploy machine learning models at scale. Work closely with research teams to bring models from prototype to production. Optimize model performance, latency, and cost. Build ML infrastructure and evaluation pipelines.
+
+Required: Strong Python skills. Experience with PyTorch or TensorFlow. Understanding of model training, fine-tuning, and evaluation. Familiarity with MLOps practices — experiment tracking, model versioning, deployment.
