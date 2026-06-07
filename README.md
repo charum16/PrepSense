@@ -1,56 +1,173 @@
-##PrepSense — AI Mock Interview Coach
+# PrepSense — AI-Powered Mock Interview Coach
 
-The interview prep tool that actually knows what your target company is looking for.
+PrepSense is an interview preparation platform that creates company-specific mock interviews using real job descriptions. Instead of asking generic interview questions, it tailors every session to the expectations of a particular role and company, then tracks performance over time to continuously adapt future interviews.
 
-Most interview prep tools give you generic LeetCode questions and canned feedback. PrepSense is different — it reads real job descriptions, conducts adaptive mock interviews grounded in what each company actually wrote, evaluates your answers with a rubric-based LLM judge, and remembers your weak areas across every session so it gets smarter about you over time.
+## Overview
 
-The Problem
-Every year, millions of candidates fail interviews not because they're unqualified — but because they prepared for the wrong things. Generic prep platforms don't know that Amazon cares about ownership, that Google values system reliability at scale, or that Meta wants data-driven product thinkers. Candidates walk in underprepared for the specific role, specific company, and specific bar.
-PrepSense fixes that.
+Most interview preparation platforms focus on generic question banks and one-size-fits-all feedback. In reality, different companies evaluate candidates differently. A backend engineer interviewing at Amazon is expected to demonstrate different strengths than one interviewing at Google or Meta.
 
-What It Does
-A user picks a role and target company. PrepSense:
+PrepSense bridges that gap by analyzing job descriptions, generating context-aware interview questions, evaluating responses using structured rubrics, and building a long-term profile of each user's strengths and weaknesses.
 
-Retrieves the most relevant chunks from that company's job description using semantic search
-Generates an adaptive interview question grounded in what the JD actually says — not a generic textbook question
-Evaluates the user's answer in real-time using an LLM-as-judge with a structured rubric (completeness, accuracy, communication clarity)
-Remembers weak areas across sessions — so next time, it pushes harder on exactly what you struggled with
-Generates a personalized 7-day study plan based on your performance history
+The result is a personalized interview coach that becomes more effective with every session.
 
-The result: an interview experience that feels like a real interviewer who has read your target company's JD and remembers every session you've had.
+---
 
-Architecture
-User picks role + company
-        ↓
-Session Agent — loads user history from Postgres
-        ↓
-RAG Retriever — semantic search over JD corpus in ChromaDB
-        ↓
-Question Generator Agent (ReAct loop) — grounded question from JD context
-        ↓
-User answers
-        ↓
-Evaluator Agent (LLM-as-judge) — structured JSON score + feedback
-        ↓
-Postgres — stores topic scores + weak areas
-        ↓
-Next session: harder questions on weak topics
-4 agents. 2 knowledge bases. 1 persistent memory layer.
+## Problem Statement
 
-Tech Stack
-LayerTechnologyLLMClaude Sonnet (Anthropic API)Agent frameworkLangGraphEmbeddingssentence-transformers (all-MiniLM-L6-v2)Vector DBChromaDB → Pinecone at scalePersistent memoryPostgreSQLRAG evaluationRAGAS (faithfulness + context precision)ObservabilityLangSmithBackendFastAPIFrontendStreamlit
+Many candidates spend weeks preparing for interviews yet still struggle because their preparation is misaligned with the role they are targeting.
 
-Key Engineering Decisions
-Why LLM-as-judge instead of keyword matching?
-Rubric-based semantic evaluation is significantly more reliable on open-ended responses. The evaluator agent returns structured JSON with per-dimension scores — making it debuggable and explainable, not a black box.
-Why ChromaDB + semantic chunking?
-Fixed-size chunking on JDs produced noisy retrieval because JD boilerplate was diluting the signal. Sentence-aware chunking with metadata filters (role, company, difficulty) dramatically improved retrieval precision — measurable with RAGAS faithfulness scores.
-Why Postgres for long-term memory instead of just the vector DB?
-Full transcript storage causes context bloat. Instead, PrepSense stores a compressed representation of user performance per topic — retrieved at session start to personalize without inflating context length.
-Why LangGraph for the agent loop?
-The question generator agent can loop if it can't find a relevant question in the retrieved context. LangGraph's explicit node-edge graph gives deterministic control over loop termination and fallback paths — critical for production reliability.
+Traditional preparation platforms have several limitations:
 
-RAG Evaluation Results
-PrepSense is benchmarked with RAGAS on a 20-question evaluation set:
-MetricBaselineAfter optimizationFaithfulness0.580.81Context Precision0.610.79
-Optimization involved switching from fixed-size to sentence-aware chunking and adding role + company metadata filters.
+- Generic question sets unrelated to specific job descriptions
+- No understanding of company-specific expectations
+- Limited personalization across sessions
+- Static feedback that does not evolve with user progress
+
+PrepSense addresses these issues by grounding interviews in real job descriptions and maintaining persistent memory of user performance.
+
+---
+
+## Features
+
+### Job Description-Aware Question Generation
+
+Relevant sections of a target company's job description are retrieved using semantic search. Questions are generated directly from the retrieved context, ensuring alignment with the role requirements.
+
+### Adaptive Mock Interviews
+
+Question difficulty evolves based on previous performance. Strong topics receive deeper follow-up questions, while weaker areas receive additional practice.
+
+### LLM-Based Answer Evaluation
+
+User responses are evaluated using a structured rubric covering:
+
+- Completeness
+- Technical accuracy
+- Communication clarity
+
+Scores and feedback are returned in a consistent JSON format for transparency and debugging.
+
+### Long-Term Performance Memory
+
+Instead of storing entire conversation histories, PrepSense maintains topic-level performance summaries in PostgreSQL. This allows personalization without excessive context growth.
+
+### Personalized Study Plans
+
+Based on historical interview performance, the platform generates targeted study recommendations and a customized 7-day preparation roadmap.
+
+---
+
+## System Architecture
+
+```text
+User
+  │
+  ▼
+Session Agent
+(Loads user history from PostgreSQL)
+  │
+  ▼
+RAG Retriever
+(ChromaDB semantic search over JD corpus)
+  │
+  ▼
+Question Generator Agent
+(JD-grounded interview questions)
+  │
+  ▼
+User Response
+  │
+  ▼
+Evaluator Agent
+(LLM-as-Judge)
+  │
+  ▼
+PostgreSQL
+(Stores scores and weak topics)
+  │
+  ▼
+Future Sessions
+(Adaptive questioning based on performance)
+```
+
+---
+
+## Tech Stack
+
+| Component | Technology |
+|------------|------------|
+| LLM | Claude Sonnet (Anthropic API) |
+| Agent Orchestration | LangGraph |
+| Embeddings | all-MiniLM-L6-v2 |
+| Vector Database | ChromaDB |
+| Scalable Vector Store | Pinecone |
+| Persistent Memory | PostgreSQL |
+| RAG Evaluation | RAGAS |
+| Observability | LangSmith |
+| Backend | FastAPI |
+| Frontend | Streamlit |
+
+---
+
+## Engineering Decisions
+
+### LLM-as-Judge Evaluation
+
+Traditional keyword matching struggles with open-ended interview responses.
+
+PrepSense uses rubric-based evaluation to score answers across multiple dimensions and return structured feedback. This approach provides greater flexibility while remaining explainable and easy to audit.
+
+### Semantic Chunking for Job Descriptions
+
+Initial experiments with fixed-size chunking produced noisy retrieval results because boilerplate content frequently appeared in retrieved contexts.
+
+Switching to sentence-aware chunking significantly improved retrieval quality. Additional metadata filtering based on role and company further increased precision.
+
+### PostgreSQL for User Memory
+
+Storing full conversation histories quickly increases context size and retrieval costs.
+
+Instead, PrepSense stores compressed topic-level performance summaries, allowing personalization without introducing unnecessary context overhead.
+
+### LangGraph for Agent Control
+
+The question-generation workflow occasionally requires retries when retrieved context is insufficient.
+
+LangGraph provides explicit graph-based control over execution flow, enabling deterministic retries, fallback paths, and termination conditions.
+
+---
+
+## RAG Evaluation
+
+The retrieval pipeline was evaluated using RAGAS on a 20-question benchmark set.
+
+| Metric | Baseline | Optimized |
+|----------|----------|-----------|
+| Faithfulness | 0.58 | 0.81 |
+| Context Precision | 0.61 | 0.79 |
+
+### Improvements Applied
+
+- Replaced fixed-size chunking with sentence-aware chunking
+- Added role-based metadata filtering
+- Added company-based metadata filtering
+- Refined retrieval pipeline for higher semantic relevance
+
+These changes produced substantial gains in both faithfulness and retrieval precision.
+
+---
+
+## Future Improvements
+
+- Voice-based mock interviews
+- Real-time interview simulations
+- Multi-agent behavioral interview evaluation
+- Company-specific competency frameworks
+- Analytics dashboard for long-term progress tracking
+- Support for system design and coding interview rounds
+
+---
+
+## Outcome
+
+PrepSense combines retrieval-augmented generation, agent workflows, and persistent user memory to deliver interview practice tailored to individual goals. By grounding questions in real job descriptions and adapting over time, it provides a more realistic and targeted preparation experience than traditional interview practice platforms.
