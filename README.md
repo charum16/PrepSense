@@ -96,7 +96,7 @@ Future Sessions
 
 | Component | Technology |
 |------------|------------|
-| LLM | Claude Sonnet (Anthropic API) |
+| LLM | Llama 3.3 70B / DeepSeek-R1 via Groq API |
 | Agent Orchestration | LangGraph |
 | Embeddings | all-MiniLM-L6-v2 |
 | Vector Database | ChromaDB |
