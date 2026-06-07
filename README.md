@@ -1,4 +1,4 @@
-#PrepSense — AI Mock Interview Coach
+##PrepSense — AI Mock Interview Coach
 
 The interview prep tool that actually knows what your target company is looking for.
 
