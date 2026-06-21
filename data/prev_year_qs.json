@@ -1,0 +1,246 @@
+{
+    "Amazon": {
+      "SWE": {
+        "DSA": [
+          {"question": "Find the longest substring without repeating characters.", "difficulty": "medium", "topic": "strings"},
+          {"question": "Merge k sorted linked lists.", "difficulty": "hard", "topic": "linked lists"},
+          {"question": "Find the kth largest element in an array.", "difficulty": "medium", "topic": "arrays"},
+          {"question": "Given a matrix, find the number of islands.", "difficulty": "medium", "topic": "graphs"},
+          {"question": "Find all permutations of a string.", "difficulty": "medium", "topic": "backtracking"}
+        ],
+        "System Design": [
+          {"question": "Design Amazon's product recommendation system.", "difficulty": "hard", "topic": "recommendation systems"},
+          {"question": "Design a distributed rate limiter.", "difficulty": "hard", "topic": "distributed systems"},
+          {"question": "Design Amazon's order tracking system.", "difficulty": "hard", "topic": "system design"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you disagreed with your manager.", "difficulty": "medium", "topic": "conflict resolution"},
+          {"question": "Describe a situation where you had to deliver under a tight deadline.", "difficulty": "medium", "topic": "ownership"},
+          {"question": "Tell me about a time you failed and what you learned.", "difficulty": "medium", "topic": "learn and be curious"}
+        ]
+      },
+      "Data": {
+        "Technical": [
+          {"question": "Given a table of orders, find the top 3 customers by revenue per month.", "difficulty": "medium", "topic": "SQL"},
+          {"question": "Explain the difference between L1 and L2 regularization.", "difficulty": "medium", "topic": "ML concepts"},
+          {"question": "How would you handle class imbalance in a fraud detection model?", "difficulty": "hard", "topic": "ML"}
+        ],
+        "Case": [
+          {"question": "Amazon's add-to-cart rate dropped 10% last week. How would you investigate?", "difficulty": "hard", "topic": "metrics"},
+          {"question": "How would you measure the success of Amazon Prime?", "difficulty": "medium", "topic": "product metrics"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time your analysis changed a business decision.", "difficulty": "medium", "topic": "impact"},
+          {"question": "Describe a situation where you had to explain complex data to a non-technical audience.", "difficulty": "medium", "topic": "communication"}
+        ]
+      },
+      "Product": {
+        "Case": [
+          {"question": "How would you improve Amazon's search experience?", "difficulty": "hard", "topic": "product improvement"},
+          {"question": "Design a feature for Amazon to help first-time buyers.", "difficulty": "medium", "topic": "product design"},
+          {"question": "How would you prioritize features for Amazon Go?", "difficulty": "hard", "topic": "prioritization"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a product you admire and why.", "difficulty": "easy", "topic": "product thinking"},
+          {"question": "Describe a time you used data to make a product decision.", "difficulty": "medium", "topic": "data driven"}
+        ]
+      }
+    },
+    "Google": {
+      "SWE": {
+        "DSA": [
+          {"question": "Find the median of two sorted arrays.", "difficulty": "hard", "topic": "arrays"},
+          {"question": "Word break problem — can a string be segmented into dictionary words?", "difficulty": "medium", "topic": "dynamic programming"},
+          {"question": "Serialize and deserialize a binary tree.", "difficulty": "hard", "topic": "trees"},
+          {"question": "Find all anagrams in a string.", "difficulty": "medium", "topic": "strings"},
+          {"question": "Clone a graph.", "difficulty": "medium", "topic": "graphs"}
+        ],
+        "System Design": [
+          {"question": "Design Google Search autocomplete.", "difficulty": "hard", "topic": "typeahead"},
+          {"question": "Design YouTube's video upload and streaming pipeline.", "difficulty": "hard", "topic": "streaming"},
+          {"question": "Design Google Maps routing system.", "difficulty": "hard", "topic": "graphs"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you took initiative beyond your role.", "difficulty": "medium", "topic": "leadership"},
+          {"question": "Describe a technically complex problem you solved.", "difficulty": "medium", "topic": "technical depth"}
+        ]
+      },
+      "Data": {
+        "Technical": [
+          {"question": "Write a SQL query to find users who logged in on consecutive days.", "difficulty": "hard", "topic": "SQL"},
+          {"question": "Explain how gradient boosting works.", "difficulty": "hard", "topic": "ML concepts"},
+          {"question": "How would you design an A/B test for a new Google Search feature?", "difficulty": "hard", "topic": "experimentation"}
+        ],
+        "Case": [
+          {"question": "Google Search CTR dropped 5% after a UI change. How do you investigate?", "difficulty": "hard", "topic": "metrics"},
+          {"question": "How would you measure the impact of Google Assistant?", "difficulty": "medium", "topic": "product metrics"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you influenced without authority.", "difficulty": "medium", "topic": "influence"},
+          {"question": "Describe a situation where you had to learn something quickly.", "difficulty": "medium", "topic": "learning"}
+        ]
+      },
+      "Product": {
+        "Case": [
+          {"question": "How would you improve Google Maps for rural areas?", "difficulty": "hard", "topic": "product improvement"},
+          {"question": "Design a feature for Google Calendar to reduce meeting fatigue.", "difficulty": "medium", "topic": "product design"}
+        ],
+        "Behavioral": [
+          {"question": "What Google product would you kill and why?", "difficulty": "medium", "topic": "product thinking"},
+          {"question": "Tell me about a time you advocated for the user.", "difficulty": "medium", "topic": "user empathy"}
+        ]
+      }
+    },
+    "Microsoft": {
+      "SWE": {
+        "DSA": [
+          {"question": "Reverse a linked list in groups of k.", "difficulty": "medium", "topic": "linked lists"},
+          {"question": "Find the longest common subsequence of two strings.", "difficulty": "medium", "topic": "dynamic programming"},
+          {"question": "Find all subsets of a set.", "difficulty": "medium", "topic": "backtracking"},
+          {"question": "Implement a stack using queues.", "difficulty": "easy", "topic": "stacks"},
+          {"question": "Find the minimum window substring.", "difficulty": "hard", "topic": "strings"}
+        ],
+        "System Design": [
+          {"question": "Design Microsoft Teams chat system.", "difficulty": "hard", "topic": "messaging"},
+          {"question": "Design Xbox Live leaderboard system.", "difficulty": "hard", "topic": "leaderboard"},
+          {"question": "Design OneDrive file sync system.", "difficulty": "hard", "topic": "file storage"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you helped a teammate grow.", "difficulty": "medium", "topic": "mentorship"},
+          {"question": "Describe a situation where you had to adapt to a major change.", "difficulty": "medium", "topic": "adaptability"}
+        ]
+      },
+      "Data": {
+        "Technical": [
+          {"question": "Write a query to find the second highest salary in each department.", "difficulty": "medium", "topic": "SQL"},
+          {"question": "Explain the bias-variance tradeoff.", "difficulty": "medium", "topic": "ML concepts"},
+          {"question": "How would you build a churn prediction model for Azure customers?", "difficulty": "hard", "topic": "ML"}
+        ],
+        "Case": [
+          {"question": "Azure subscription renewals dropped 8%. Walk me through your analysis.", "difficulty": "hard", "topic": "metrics"},
+          {"question": "How would you measure developer satisfaction with GitHub Copilot?", "difficulty": "medium", "topic": "product metrics"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time your recommendation was rejected.", "difficulty": "medium", "topic": "resilience"},
+          {"question": "Describe a time you improved a process.", "difficulty": "medium", "topic": "process improvement"}
+        ]
+      },
+      "Product": {
+        "Case": [
+          {"question": "How would you improve Microsoft Teams for remote teams?", "difficulty": "hard", "topic": "product improvement"},
+          {"question": "Design a feature for LinkedIn to help job seekers.", "difficulty": "medium", "topic": "product design"}
+        ],
+        "Behavioral": [
+          {"question": "What Microsoft product would you improve and how?", "difficulty": "medium", "topic": "product thinking"},
+          {"question": "Tell me about a time you balanced user needs with business goals.", "difficulty": "medium", "topic": "tradeoffs"}
+        ]
+      }
+    },
+    "Adobe": {
+      "SWE": {
+        "DSA": [
+          {"question": "Find the largest rectangle in a histogram.", "difficulty": "hard", "topic": "stacks"},
+          {"question": "Given an image matrix, rotate it 90 degrees.", "difficulty": "medium", "topic": "arrays"},
+          {"question": "Implement run-length encoding.", "difficulty": "easy", "topic": "strings"},
+          {"question": "Find the number of ways to reach the top of a staircase.", "difficulty": "easy", "topic": "dynamic programming"},
+          {"question": "Given a BST, convert it to a sorted doubly linked list.", "difficulty": "hard", "topic": "trees"}
+        ],
+        "System Design": [
+          {"question": "Design Adobe Photoshop's undo/redo system.", "difficulty": "hard", "topic": "design patterns"},
+          {"question": "Design a collaborative document editing system like Google Docs.", "difficulty": "hard", "topic": "real-time systems"},
+          {"question": "Design Adobe Sign's e-signature workflow.", "difficulty": "hard", "topic": "workflow systems"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you improved a creative workflow.", "difficulty": "medium", "topic": "innovation"},
+          {"question": "Describe a time you received critical feedback.", "difficulty": "medium", "topic": "growth mindset"}
+        ]
+      },
+      "Data": {
+        "Technical": [
+          {"question": "Write a SQL query to find users who used the app every day for a week.", "difficulty": "hard", "topic": "SQL"},
+          {"question": "How would you build a content recommendation system for Adobe Stock?", "difficulty": "hard", "topic": "ML"},
+          {"question": "Explain how you would detect anomalies in Creative Cloud usage data.", "difficulty": "hard", "topic": "anomaly detection"}
+        ],
+        "Case": [
+          {"question": "Adobe Premiere exports dropped 15% last month. How do you investigate?", "difficulty": "hard", "topic": "metrics"},
+          {"question": "How would you measure the success of Adobe Express?", "difficulty": "medium", "topic": "product metrics"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you used data to improve a creative product.", "difficulty": "medium", "topic": "impact"},
+          {"question": "Describe a situation where data and intuition conflicted.", "difficulty": "medium", "topic": "judgment"}
+        ]
+      },
+      "Product": {
+        "Case": [
+          {"question": "How would you improve Adobe Photoshop for beginners?", "difficulty": "medium", "topic": "product improvement"},
+          {"question": "Design a feature for Adobe XD to improve designer-developer handoff.", "difficulty": "hard", "topic": "product design"}
+        ],
+        "Behavioral": [
+          {"question": "What creative tool would you build for the next generation of creators?", "difficulty": "medium", "topic": "product vision"},
+          {"question": "Tell me about a time you advocated for a non-obvious product decision.", "difficulty": "hard", "topic": "conviction"}
+        ]
+      }
+    },
+    "Generic": {
+      "SWE": {
+        "DSA": [
+          {"question": "Find the two numbers in an array that sum to a target.", "difficulty": "easy", "topic": "arrays"},
+          {"question": "Check if a string is a palindrome.", "difficulty": "easy", "topic": "strings"},
+          {"question": "Find the height of a binary tree.", "difficulty": "easy", "topic": "trees"},
+          {"question": "Detect a cycle in a linked list.", "difficulty": "medium", "topic": "linked lists"},
+          {"question": "Find the shortest path in an unweighted graph.", "difficulty": "medium", "topic": "graphs"}
+        ],
+        "System Design": [
+          {"question": "Design a URL shortener.", "difficulty": "medium", "topic": "system design"},
+          {"question": "Design a rate limiter.", "difficulty": "hard", "topic": "system design"},
+          {"question": "Design a notification system.", "difficulty": "medium", "topic": "system design"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a project you're most proud of.", "difficulty": "easy", "topic": "experience"},
+          {"question": "Describe a time you worked in a cross-functional team.", "difficulty": "medium", "topic": "collaboration"},
+          {"question": "Tell me about a time you solved a difficult technical problem.", "difficulty": "medium", "topic": "problem solving"}
+        ]
+      },
+      "Data": {
+        "Technical": [
+          {"question": "Write a SQL query to find duplicate records in a table.", "difficulty": "easy", "topic": "SQL"},
+          {"question": "Explain the difference between supervised and unsupervised learning.", "difficulty": "easy", "topic": "ML concepts"},
+          {"question": "How would you handle missing values in a dataset?", "difficulty": "medium", "topic": "data preprocessing"}
+        ],
+        "Case": [
+          {"question": "A key metric dropped 20% overnight. Walk me through your investigation.", "difficulty": "medium", "topic": "metrics"},
+          {"question": "How would you measure the success of a new feature launch?", "difficulty": "medium", "topic": "product metrics"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time your analysis had a real business impact.", "difficulty": "medium", "topic": "impact"},
+          {"question": "Describe a time you had to clean messy data under time pressure.", "difficulty": "medium", "topic": "execution"}
+        ]
+      },
+      "Product": {
+        "Case": [
+          {"question": "How would you improve Spotify's discovery feature?", "difficulty": "medium", "topic": "product improvement"},
+          {"question": "Design a feature for Instagram to reduce doomscrolling.", "difficulty": "medium", "topic": "product design"},
+          {"question": "How would you prioritize a product roadmap with limited engineering resources?", "difficulty": "hard", "topic": "prioritization"}
+        ],
+        "Behavioral": [
+          {"question": "What product do you use daily and how would you improve it?", "difficulty": "easy", "topic": "product thinking"},
+          {"question": "Tell me about a time you shipped something imperfect.", "difficulty": "medium", "topic": "execution"}
+        ]
+      },
+      "Analyst": {
+        "Technical": [
+          {"question": "Write a SQL query to calculate month-over-month growth.", "difficulty": "medium", "topic": "SQL"},
+          {"question": "How would you build a dashboard to track user retention?", "difficulty": "medium", "topic": "analytics"},
+          {"question": "Explain the difference between correlation and causation with an example.", "difficulty": "easy", "topic": "statistics"}
+        ],
+        "Case": [
+          {"question": "Revenue is up but profit is down. What could be happening?", "difficulty": "medium", "topic": "business analysis"},
+          {"question": "How would you size the market for a food delivery app in Delhi?", "difficulty": "medium", "topic": "market sizing"}
+        ],
+        "Behavioral": [
+          {"question": "Tell me about a time you turned ambiguous data into a clear recommendation.", "difficulty": "medium", "topic": "communication"},
+          {"question": "Describe a time you disagreed with a stakeholder's interpretation of data.", "difficulty": "medium", "topic": "conflict resolution"}
+        ]
+      }
+    }
+  }
