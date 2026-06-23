@@ -36,3 +36,4 @@ with open("practice/attention_viz.html", "w") as f:
     f.write(html_obj.data)
 
 print("Saved! Open practice/attention_viz.html in your browser.")
+

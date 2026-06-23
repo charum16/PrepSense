@@ -1,153 +1,111 @@
 {
-  "default_user": {
+  "default_user_Adobe_SWE": {
     "sessions": [
       {
-        "timestamp": "2026-06-21T22:54:08.039314",
-        "company": "Amazon",
+        "timestamp": "2026-06-24T03:21:03.544035",
+        "company": "Adobe",
         "role": "SWE",
         "round_type": "DSA",
         "scores": [
           {
-            "topic": "array",
-            "score": 4,
-            "question": "Write a function to find the first duplicate in an array of integers. The function should return the first duplicate element if it exists, otherwise return null."
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a given string of integers by representing consecutive repeated integers as a range. For example, the input [1, 1, 1, 2, 3, 3, 4, 4, 4, 4] would be compressed to [(1, 3), (2, 1), (3, 2), (4, 4)]."
           },
           {
-            "topic": "array",
-            "score": 1,
-            "question": "Given a sorted array of integers, find the first pair of elements that add up to a given target sum. Return the indices of these two elements in the array. If no such pair exists, return an empty list."
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a binary image represented as a 2D array of 0s and 1s, where consecutive rows of identical pixels are represented as a tuple of the row and the count of consecutive rows. For example, the input [[0, 0], [0, 0], [1, 1], [1, 1], [1, 1]] would be compressed to [[0, 0], 2, [1, 1], 3]."
           },
           {
-            "topic": "array",
+            "topic": "binary search",
             "score": 1,
-            "question": "Given an array of integers and an integer k, find the length of the longest subarray with a sum that is a multiple of k. The subarray must have at least one element."
+            "question": "Implement a function to compress a stream of real-time sensor data, where consecutive readings with the same value are represented as a tuple of the reading value and the count of consecutive readings. The function should handle a stream of data that may contain errors, represented by a special 'ERR' value, which should be ignored in the compression process."
           },
           {
-            "topic": "array",
+            "topic": "binary search",
             "score": 1,
-            "question": "Given an array of integers, find the minimum number of operations required to make all elements in the array equal, where an operation is defined as either incrementing or decrementing an element by 1. The array can be modified in-place."
+            "question": "Implement a function to compress a sequence of calendar events, where consecutive events with the same title are represented as a tuple of the title and the count of consecutive events. For example, the input ['Meeting', 'Meeting', 'Lunch', 'Lunch', 'Lunch', 'Dinner'] would be compressed to [('Meeting', 2), ('Lunch', 3), ('Dinner', 1)]."
           },
           {
-            "topic": "array",
+            "topic": "binary search",
             "score": 1,
-            "question": "Given an array of integers, find the maximum sum of a subarray with a size equal to a given integer k, such that the subarray can be formed by rotating the original array. Return the maximum sum and the starting index of the subarray in the rotated array."
+            "question": "Implement a function to compress a sequence of product codes, where consecutive codes with the same value are represented as a tuple of the code and the count of consecutive codes."
           }
         ],
-        "avg_score": 1.6
+        "avg_score": 3.8
       },
       {
-        "timestamp": "2026-06-21T23:06:44.884270",
-        "company": "Myntra",
-        "role": "Product",
-        "round_type": "Case",
+        "timestamp": "2026-06-24T03:21:12.603258",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
         "scores": [
           {
-            "topic": "KPI and Metrics",
-            "score": 1,
-            "question": "What key performance indicators (KPIs) would you use to measure the success of a new feature on Myntra's mobile app that allows users to virtually try on clothing, and how would you prioritize them?"
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a given string of integers by representing consecutive repeated integers as a range. For example, the input [1, 1, 1, 2, 3, 3, 4, 4, 4, 4] would be compressed to [(1, 3), (2, 1), (3, 2), (4, 4)]."
           },
           {
-            "topic": "Product Metrics",
-            "score": 1,
-            "question": "Myntra is launching a new loyalty program to increase customer retention, what KPIs would you track to measure the program's effectiveness, and how would you weigh their importance?"
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a binary image represented as a 2D array of 0s and 1s, where consecutive rows of identical pixels are represented as a tuple of the row and the count of consecutive rows. For example, the input [[0, 0], [0, 0], [1, 1], [1, 1], [1, 1]] would be compressed to [[0, 0], 2, [1, 1], 3]."
           },
           {
-            "topic": "KPI Analysis",
+            "topic": "binary search",
             "score": 1,
-            "question": "Myntra's average order value (AOV) has been decreasing over the past quarter, what metrics would you investigate to identify the root cause, and how would you prioritize your analysis to inform a corrective product strategy?"
+            "question": "Implement a function to compress a stream of real-time sensor data, where consecutive readings with the same value are represented as a tuple of the reading value and the count of consecutive readings. The function should handle a stream of data that may contain errors, represented by a special 'ERR' value, which should be ignored in the compression process."
           },
           {
-            "topic": "KPI and Strategy",
+            "topic": "binary search",
             "score": 1,
-            "question": "Myntra's customer service team has seen a significant increase in returns and exchanges, what KPIs would you use to identify the root cause of the issue, and how would you develop a data-driven strategy to reduce returns by 20% within the next 6 months?"
+            "question": "Implement a function to compress a sequence of calendar events, where consecutive events with the same title are represented as a tuple of the title and the count of consecutive events. For example, the input ['Meeting', 'Meeting', 'Lunch', 'Lunch', 'Lunch', 'Dinner'] would be compressed to [('Meeting', 2), ('Lunch', 3), ('Dinner', 1)]."
           },
           {
-            "topic": "KPI evaluation and trade-off analysis",
+            "topic": "binary search",
             "score": 1,
-            "question": "Suppose Myntra launches a new personalized product recommendation feature on its website, and after 3 months, the feature has led to a 15% increase in sales, but also a 10% increase in customer complaints about irrelevant recommendations, what KPIs would you use to evaluate the feature's overall effectiveness, and how would you balance the trade-off between revenue growth and customer satisfaction?"
+            "question": "Implement a function to compress a sequence of product codes, where consecutive codes with the same value are represented as a tuple of the code and the count of consecutive codes."
           }
         ],
-        "avg_score": 1.0
+        "avg_score": 3.8
       },
       {
-        "timestamp": "2026-06-21T23:07:02.042391",
-        "company": "Myntra",
-        "role": "Product",
-        "round_type": "Case",
+        "timestamp": "2026-06-24T03:21:17.723364",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
         "scores": [
           {
-            "topic": "KPI and Metrics",
-            "score": 1,
-            "question": "What key performance indicators (KPIs) would you use to measure the success of a new feature on Myntra's mobile app that allows users to virtually try on clothing, and how would you prioritize them?"
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a given string of integers by representing consecutive repeated integers as a range. For example, the input [1, 1, 1, 2, 3, 3, 4, 4, 4, 4] would be compressed to [(1, 3), (2, 1), (3, 2), (4, 4)]."
           },
           {
-            "topic": "Product Metrics",
-            "score": 1,
-            "question": "Myntra is launching a new loyalty program to increase customer retention, what KPIs would you track to measure the program's effectiveness, and how would you weigh their importance?"
+            "topic": "binary search",
+            "score": 8,
+            "question": "Implement a function to compress a binary image represented as a 2D array of 0s and 1s, where consecutive rows of identical pixels are represented as a tuple of the row and the count of consecutive rows. For example, the input [[0, 0], [0, 0], [1, 1], [1, 1], [1, 1]] would be compressed to [[0, 0], 2, [1, 1], 3]."
           },
           {
-            "topic": "KPI Analysis",
+            "topic": "binary search",
             "score": 1,
-            "question": "Myntra's average order value (AOV) has been decreasing over the past quarter, what metrics would you investigate to identify the root cause, and how would you prioritize your analysis to inform a corrective product strategy?"
+            "question": "Implement a function to compress a stream of real-time sensor data, where consecutive readings with the same value are represented as a tuple of the reading value and the count of consecutive readings. The function should handle a stream of data that may contain errors, represented by a special 'ERR' value, which should be ignored in the compression process."
           },
           {
-            "topic": "KPI and Strategy",
+            "topic": "binary search",
             "score": 1,
-            "question": "Myntra's customer service team has seen a significant increase in returns and exchanges, what KPIs would you use to identify the root cause of the issue, and how would you develop a data-driven strategy to reduce returns by 20% within the next 6 months?"
+            "question": "Implement a function to compress a sequence of calendar events, where consecutive events with the same title are represented as a tuple of the title and the count of consecutive events. For example, the input ['Meeting', 'Meeting', 'Lunch', 'Lunch', 'Lunch', 'Dinner'] would be compressed to [('Meeting', 2), ('Lunch', 3), ('Dinner', 1)]."
           },
           {
-            "topic": "KPI evaluation and trade-off analysis",
+            "topic": "binary search",
             "score": 1,
-            "question": "Suppose Myntra launches a new personalized product recommendation feature on its website, and after 3 months, the feature has led to a 15% increase in sales, but also a 10% increase in customer complaints about irrelevant recommendations, what KPIs would you use to evaluate the feature's overall effectiveness, and how would you balance the trade-off between revenue growth and customer satisfaction?"
+            "question": "Implement a function to compress a sequence of product codes, where consecutive codes with the same value are represented as a tuple of the code and the count of consecutive codes."
           }
         ],
-        "avg_score": 1.0
-      },
-      {
-        "timestamp": "2026-06-22T01:41:23.497507",
-        "company": "JP Morgan",
-        "role": "Analyst",
-        "round_type": "Technical",
-        "scores": [
-          {
-            "topic": "SQL",
-            "score": 2,
-            "question": "What is the difference between INNER JOIN and LEFT JOIN in SQL?"
-          },
-          {
-            "topic": "SQL",
-            "score": 6,
-            "question": "What is the purpose of the HAVING clause in SQL, and how does it differ from the WHERE clause?"
-          },
-          {
-            "topic": "SQL",
-            "score": 1,
-            "question": "Write a SQL query to find the top 3 products with the highest average order value, considering only orders made in the last 6 months, and provide the product name, average order value, and total revenue for each product"
-          },
-          {
-            "topic": "Database Systems and Financial Analytics",
-            "score": 1,
-            "question": "Design a high-performance database schema to store and analyze large volumes of financial transaction data, including trade records, order books, and market data feeds, and write a SQL query to calculate the daily Value-at-Risk (VaR) for a portfolio of assets"
-          },
-          {
-            "topic": "Database Optimization",
-            "score": 1,
-            "question": "Explain how you would optimize the performance of a relational database that is experiencing high latency due to frequent deadlocks, and write a SQL query to identify the top 5 most frequently accessed tables in the database, including the number of reads, writes, and deadlocks for each table"
-          }
-        ],
-        "avg_score": 2.2
+        "avg_score": 3.8
       }
     ],
     "weak_areas": [
-      "array",
-      "KPI and Metrics",
-      "Product Metrics",
-      "KPI Analysis",
-      "KPI and Strategy",
-      "KPI evaluation and trade-off analysis",
-      "SQL",
-      "Database Systems and Financial Analytics",
-      "Database Optimization"
+      "binary search"
     ]
   }
 }

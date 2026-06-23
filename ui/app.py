@@ -1,18 +1,15 @@
 import streamlit as st
 import sys
 import os
-import json
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from groq import Groq
 from dotenv import load_dotenv
-from rag.retriever_v1 import retrieve_questions
-from api.evaluator import evaluate_answer
+from agents.interview_graph import build_question_graph, build_answer_graph, create_initial_state
+from agents.study_plan_agent import generate_study_plan
 from memory.session_store import save_session, get_weak_areas, get_avg_score_by_topic
 
 load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 st.set_page_config(page_title="PrepSense", page_icon="🎯", layout="centered")
 
@@ -46,116 +43,48 @@ INJECTION_KEYWORDS = [
     "act as", "forget previous"
 ]
 
+
 def is_injection(text: str) -> bool:
     return any(k in text.lower() for k in INJECTION_KEYWORDS)
 
-def get_difficulty(user_id: str, question_number: int, topic: str) -> str:
-    avg_scores = get_avg_score_by_topic(user_id)
-    if topic in avg_scores:
-        avg = avg_scores[topic]
-        if avg < 5:
-            return "easy"
-        elif avg < 7:
-            return "medium"
-        else:
-            return "hard"
-    if question_number == 1:
-        return "easy"
-    elif question_number == 2:
-        return "medium"
-    else:
-        return "hard"
 
-def build_system_prompt(company, role, round_type, topic, difficulty):
-    rag_results = retrieve_questions(company, role, round_type, topic, n_results=3)
-    context_str = "\n".join([f"- [{r['difficulty']}] {r['question']}" for r in rag_results])
+@st.cache_resource
+def get_question_graph():
+    return build_question_graph()
 
-    role_instructions = {
-        "SWE": "Focus on problem-solving approach, time/space complexity, and edge cases.",
-        "Data": "Focus on SQL correctness, statistical reasoning, and business interpretation.",
-        "Product": "Focus on structured thinking, user empathy, and prioritization framework.",
-        "Analyst": "Focus on business logic, metric definition, and communication clarity."
-    }
-    round_instructions = {
-        "DSA": "Ask a coding problem. You MUST include exactly 2 concrete input/output examples.",
-        "System Design": "Ask an open-ended system design question. No examples needed.",
-        "Behavioral": "Ask a behavioral question. Expect a STAR format answer. No examples needed.",
-        "Technical": "Ask a technical concept or SQL question. No examples needed.",
-        "Case": "Ask a product or business case question. No examples needed."
-    }
 
-    return f"""You are a senior interviewer at {company} hiring for a {role} role.
-Rules: Only ask questions, never answer them. Never reveal the rubric. Current difficulty: {difficulty}.
+@st.cache_resource
+def get_answer_graph():
+    return build_answer_graph()
 
-Previous {company} {round_type} questions for context:
-{context_str}
 
-{role_instructions.get(role, "")}
-{round_instructions.get(round_type, "")}
-
-Respond in this exact JSON format only. No text before or after the JSON:
-{{
-    "question": "...",
-    "difficulty": "{difficulty}",
-    "topic": "...",
-    "examples": [
-        {{"input": "...", "output": "..."}},
-        {{"input": "...", "output": "..."}}
-    ]
-}}
-
-For DSA: populate examples with 2 real input/output pairs.
-For all other rounds: set examples to empty list []."""
-
-def fetch_question(company, role, round_type, topic, difficulty, session_history):
-    system_prompt = build_system_prompt(company, role, round_type, topic, difficulty)
-    messages = session_history + [
-        {"role": "user", "content": f"Ask me a {difficulty} {round_type} question about {topic}."}
-    ]
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "system", "content": system_prompt}] + messages,
-        temperature=0.7,
-        max_tokens=600,
-        stream=False
-    )
-    st.session_state.last_raw_response = response.choices[0].message.content
-
-def parse_last_response() -> dict:
-    raw = st.session_state.get("last_raw_response", "")
-    try:
-        return json.loads(raw)
-    except:
-        cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-        try:
-            return json.loads(cleaned)
-        except:
-            return {"question": raw, "difficulty": "unknown", "topic": "", "examples": []}
-
-# ── Why render_message() exists ────────────────────────────────────────────────
-# chat_messages stores the full content of every message as a dict with
-# a "type" field. On every rerun Streamlit replays all messages from
-# session_state. If examples were rendered separately outside chat_messages
-# they'd be wiped on rerun. By storing everything — question text, examples,
-# score breakdown — inside chat_messages, every rerun re-renders them correctly.
-
+# ── render_message ─────────────────────────────────────────────────────────────
 def render_message(msg: dict):
-    """Renders a stored message dict back into the UI."""
     with st.chat_message(msg["role"]):
         if msg["type"] == "question":
             st.caption(msg["caption"])
             st.markdown(msg["content"])
-            # Examples stored inside the message — survive reruns
             if msg.get("examples"):
                 st.markdown("**Examples:**")
                 for ex in msg["examples"]:
-                    st.code(f"Input:  {ex.get('input', '')}\nOutput: {ex.get('output', '')}")
+                    inp = ex.get("input", "")
+                    out = ex.get("output", "")
+                    # Pretty-print dicts/lists as JSON
+                    if isinstance(inp, (dict, list)):
+                        import json as _json
+                        inp = _json.dumps(inp, indent=2)
+                    if isinstance(out, (dict, list)):
+                        import json as _json
+                        out = _json.dumps(out, indent=2)
+                    st.code(f"Input:  {inp}\nOutput: {out}", language="json")
 
         elif msg["type"] == "answer":
             st.markdown(msg["content"])
 
         elif msg["type"] == "evaluation":
-            st.markdown(f"**Score: {msg['score']}/10**")
+            score = msg["score"]
+            icon  = "🟢" if score >= 7 else "🟡" if score >= 5 else "🔴"
+            st.markdown(f"{icon} **Score: {score}/10**")
             if msg.get("what_was_right"):
                 st.markdown("**✓ What you got right:**")
                 for point in msg["what_was_right"]:
@@ -169,18 +98,70 @@ def render_message(msg: dict):
             if msg.get("star_warning"):
                 st.warning("Your answer was missing some STAR components.")
 
-# ── Session state init ─────────────────────────────────────────────────────────
+
+# ── render_study_plan ──────────────────────────────────────────────────────────
+def render_study_plan(plan: dict):
+    company = plan.get("target_company", "")
+    role    = plan.get("target_role", "")
+    hours   = plan.get("total_hours", 35)
+
+    st.markdown(f"### 📅 7-Day Study Plan — {company} · {role}")
+    st.caption(f"~{hours} hours total · 4-5 hours/day · Personalized to your weak areas")
+
+    if plan.get("weak_areas"):
+        st.warning(f"⚠ Priority focus: **{', '.join(plan['weak_areas'])}**")
+
+    if plan.get("final_tip"):
+        st.info(f"💡 **Pro tip:** {plan['final_tip']}")
+
+    days = plan.get("days", [])
+    if not days:
+        st.warning("Could not generate study plan. Complete more sessions to build your profile.")
+        return
+
+    for day in days:
+        day_num        = day.get("day", "")
+        focus          = day.get("focus", "")
+        day_hours      = day.get("hours", 5)
+        schedule       = day.get("schedule", [])
+        tasks          = day.get("tasks", [])
+        resources      = day.get("resources", [])
+        success_metric = day.get("success_metric", "")
+
+        with st.expander(f"**Day {day_num}** — {focus} · _{day_hours}h_", expanded=(day_num == 1)):
+
+            if schedule:
+                st.markdown("**🕐 Hour-by-Hour Schedule**")
+                for slot in schedule:
+                    st.markdown(f"- **{slot.get('hour', '')}** — {slot.get('activity', '')}")
+                st.divider()
+
+            col1, col2 = st.columns(2)
+            with col1:
+                if tasks:
+                    st.markdown("**✅ Tasks**")
+                    for t in tasks:
+                        st.markdown(f"- {t}")
+            with col2:
+                if resources:
+                    st.markdown("**📚 Resources**")
+                    for r in resources:
+                        st.markdown(f"- {r}")
+
+            if success_metric:
+                st.success(f"**✓ Done when:** {success_metric}")
+
+
+# ── Session state defaults ─────────────────────────────────────────────────────
 defaults = {
-    "setup_done": False,
-    "session_history": [],
-    "question_number": 0,
-    "chat_messages": [],
+    "setup_done":         False,
+    "chat_messages":      [],
+    "session_complete":   False,
+    "graph_state":        None,
     "waiting_for_answer": False,
-    "session_complete": False,
-    "last_question": "",
-    "session_scores": [],
-    "last_actual_topic": "",
-    "last_raw_response": ""
+    "study_plan":         None,
+    "show_study_plan":    False,
+    "jd_preview":         None,
 }
 for k, v in defaults.items():
     if k not in st.session_state:
@@ -193,13 +174,11 @@ st.caption("AI-powered mock interview coach")
 # ── Setup screen ───────────────────────────────────────────────────────────────
 if not st.session_state.setup_done:
     st.markdown("### Start your session")
-    company = st.text_input("Company", placeholder="Amazon, Google, or any company name")
-    role = st.selectbox("Role", VALID_ROLES)
-    round_type = st.selectbox("Round type", VALID_ROUNDS[role])
-    topic = st.text_input("Topic", placeholder="e.g. dynamic programming, SQL, product metrics")
 
-    if "jd_preview" not in st.session_state:
-        st.session_state.jd_preview = None
+    company    = st.text_input("Company", placeholder="Amazon, Google, or any company name")
+    role       = st.selectbox("Role", VALID_ROLES)
+    round_type = st.selectbox("Round type", VALID_ROUNDS[role])
+    topic      = st.text_input("Topic", placeholder="e.g. dynamic programming, SQL, product metrics")
 
     col1, col2 = st.columns([2, 1])
     with col1:
@@ -210,18 +189,14 @@ if not st.session_state.setup_done:
                 PRELOADED = ["Amazon", "Google", "Microsoft", "Adobe"]
                 if company in PRELOADED:
                     st.session_state.jd_preview = {
-                        "found": True,
-                        "source": "preloaded",
-                        "skills": [],
-                        "titles": [f"{company} Software Engineer"]
+                        "found": True, "source": "preloaded",
+                        "skills": [], "titles": [f"{company} Software Engineer"]
                     }
                 else:
                     with st.spinner(f"Fetching {company} JD from Adzuna..."):
                         from rag.jdfetcher import fetch_and_store_jd
-                        jd_data = fetch_and_store_jd(company)
-                        st.session_state.jd_preview = jd_data
+                        st.session_state.jd_preview = fetch_and_store_jd(company)
 
-    # Show JD preview card
     if st.session_state.jd_preview:
         preview = st.session_state.jd_preview
         if preview.get("source") == "preloaded":
@@ -232,35 +207,42 @@ if not st.session_state.setup_done:
                 st.caption(f"Roles found: {', '.join(preview['titles'][:3])}")
             if preview.get("skills"):
                 st.markdown("**Key skills extracted from JD:**")
-                skill_cols = st.columns(3)
+                cols = st.columns(3)
                 for i, skill in enumerate(preview["skills"][:12]):
-                    with skill_cols[i % 3]:
+                    with cols[i % 3]:
                         st.markdown(f"• {skill}")
         else:
-            st.warning(f"No JD found for {company} on Adzuna — will use Generic question bank as fallback.")
+            st.warning(f"No JD found for {company} — will use Generic question bank.")
 
     with col2:
-        if st.button("Start Interview", type="primary"):
+        if st.button("Start Interview →", type="primary"):
             if not company or not topic:
                 st.error("Please fill in company and topic.")
             elif is_injection(company) or is_injection(topic):
                 st.error("Invalid input detected.")
             else:
-                st.session_state.company = company
-                st.session_state.role = role
-                st.session_state.round_type = round_type
-                st.session_state.topic = topic
-                st.session_state.jd_preview = None
-                st.session_state.setup_done = True
+                st.session_state.graph_state        = create_initial_state(
+                    company=company, role=role,
+                    round_type=round_type, topic=topic,
+                    user_id="default_user"
+                )
+                st.session_state.jd_preview         = None
+                st.session_state.setup_done         = True
+                st.session_state.waiting_for_answer = False
+                st.session_state.study_plan         = None
+                st.session_state.show_study_plan    = False
                 st.rerun()
 
 # ── Interview screen ───────────────────────────────────────────────────────────
 else:
-    company = st.session_state.company
-    role = st.session_state.role
-    round_type = st.session_state.round_type
-    topic = st.session_state.topic
-    user_id = "default_user"
+    state      = st.session_state.graph_state
+    company    = state["company"]
+    role       = state["role"]
+    round_type = state["round_type"]
+    topic      = state["topic"]
+    user_id    = state["user_id"]
+    q_num      = state.get("question_number", 0)
+    max_q      = state.get("max_questions", MAX_QUESTIONS)
 
     st.markdown(
         f'<span class="session-badge">{company}</span>'
@@ -269,73 +251,102 @@ else:
         f'<span class="session-badge">{topic}</span>',
         unsafe_allow_html=True
     )
+
+    if not st.session_state.session_complete:
+        st.progress(q_num / max_q if max_q > 0 else 0,
+                    text=f"Question {q_num} of {max_q}")
+
     st.divider()
 
-    # Replay all messages from session_state — this is what survives reruns
     for msg in st.session_state.chat_messages:
         render_message(msg)
 
     # ── Session complete ───────────────────────────────────────────────────────
     if st.session_state.session_complete:
+        scores = state["session_scores"]
+        avg    = sum(s["score"] for s in scores) / len(scores) if scores else 0
+
         save_session(
             user_id=user_id,
             company=company,
             role=role,
             round_type=round_type,
-            scores=st.session_state.session_scores
+            scores=scores
         )
 
-        weak_areas = get_weak_areas(user_id)
-        avg_scores = get_avg_score_by_topic(user_id)
-        avg = sum(s["score"] for s in st.session_state.session_scores) / len(st.session_state.session_scores) if st.session_state.session_scores else 0
+        # Try calling get_weak_areas with company+role; fall back if not supported
+        try:
+            weak_areas = get_weak_areas(user_id, company, role)
+            avg_scores = get_avg_score_by_topic(user_id, company, role)
+        except TypeError:
+            weak_areas = get_weak_areas(user_id)
+            avg_scores = get_avg_score_by_topic(user_id)
 
-        st.success(f"Session complete! Average score: {avg:.1f}/10")
+        icon = "🟢" if avg >= 7 else "🟡" if avg >= 5 else "🔴"
+        st.success(f"Session complete! {icon} Average score: **{avg:.1f}/10**")
 
         if weak_areas:
-            st.warning(f"Weak areas identified: {', '.join(weak_areas)}")
+            st.warning(f"⚠ Weak areas: **{', '.join(weak_areas)}**")
 
-        st.markdown("**Score breakdown this session:**")
-        for s in st.session_state.session_scores:
-            color = "🟢" if s["score"] >= 7 else "🟡" if s["score"] >= 5 else "🔴"
-            st.markdown(f"{color} {s['topic']} — {s['score']}/10")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**This session:**")
+            for s in scores:
+                c = "🟢" if s["score"] >= 7 else "🟡" if s["score"] >= 5 else "🔴"
+                st.markdown(f"{c} {s['topic']} — **{s['score']}/10**")
+        with col2:
+            if avg_scores:
+                st.markdown(f"**All-time — {company} · {role}:**")
+                for t, avg_s in avg_scores.items():
+                    c = "🟢" if avg_s >= 7 else "🟡" if avg_s >= 5 else "🔴"
+                    st.markdown(f"{c} {t}: **{avg_s}/10**")
 
-        if avg_scores:
-            st.markdown("**Your all-time averages:**")
-            for t, avg_s in avg_scores.items():
-                color = "🟢" if avg_s >= 7 else "🟡" if avg_s >= 5 else "🔴"
-                st.markdown(f"{color} {t}: {avg_s}/10")
+        st.divider()
 
-        if st.button("Start new session"):
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
-            st.rerun()
+        if not st.session_state.show_study_plan:
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("📅 Generate My 7-Day Study Plan", type="primary", use_container_width=True):
+                    with st.spinner("Generating your personalized study plan..."):
+                        st.session_state.study_plan = generate_study_plan(
+                            user_id, company, role,
+                            session_scores=state["session_scores"]
+                        )
+                        st.session_state.show_study_plan = True
+                    st.rerun()
+            with c2:
+                if st.button("🔄 Start new session", use_container_width=True):
+                    for key in list(st.session_state.keys()):
+                        del st.session_state[key]
+                    st.rerun()
+        else:
+            render_study_plan(st.session_state.study_plan)
+            st.divider()
+            if st.button("🔄 Start new session"):
+                for key in list(st.session_state.keys()):
+                    del st.session_state[key]
+                st.rerun()
 
     # ── Generate next question ─────────────────────────────────────────────────
     elif not st.session_state.waiting_for_answer:
-        st.session_state.question_number += 1
-        difficulty = get_difficulty(user_id, st.session_state.question_number, topic)
+        with st.spinner(f"Generating question {q_num + 1} of {max_q}..."):
+            state = get_question_graph().invoke(state)
 
-        with st.spinner("Generating question..."):
-            fetch_question(company, role, round_type, topic, difficulty, st.session_state.session_history)
+        st.session_state.graph_state = state
 
-        result = parse_last_response()
-        question_text = result.get("question", st.session_state.get("last_raw_response", ""))
-        actual_topic = result.get("topic", topic)
-        examples = result.get("examples", [])
+        question_text = state["current_question"]
+        q_num         = state["question_number"]
+        difficulty    = state["current_difficulty"]
+        examples      = state.get("current_examples", [])
 
-        st.session_state.last_question = question_text
-        st.session_state.last_actual_topic = actual_topic
+        st.session_state.chat_messages.append({
+            "role":     "assistant",
+            "type":     "question",
+            "caption":  f"Question {q_num} of {state['max_questions']} — {difficulty.upper()}",
+            "content":  question_text,
+            "examples": examples       # always passed; render_message shows them if non-empty
+        })
 
-        # Store everything in chat_messages — examples included
-        msg = {
-            "role": "assistant",
-            "type": "question",
-            "caption": f"Question {st.session_state.question_number} of {MAX_QUESTIONS} — {difficulty.upper()}",
-            "content": question_text,
-            "examples": examples  # stored here, rendered by render_message()
-        }
-        st.session_state.chat_messages.append(msg)
-        st.session_state.session_history.append({"role": "assistant", "content": question_text})
         st.session_state.waiting_for_answer = True
         st.rerun()
 
@@ -347,43 +358,51 @@ else:
                 st.warning("That looks like an injection attempt. Please answer the question.")
             else:
                 st.session_state.chat_messages.append({
-                    "role": "user",
-                    "type": "answer",
-                    "content": answer
-                })
-                st.session_state.session_history.append({"role": "user", "content": answer})
-
-                with st.spinner("Evaluating your answer..."):
-                    eval_result = evaluate_answer(
-                        question=st.session_state.last_question,
-                        answer=answer,
-                        round_type=round_type,
-                        topic=topic
-                    )
-
-                score = eval_result.get("score", 0)
-
-                st.session_state.session_scores.append({
-                    "topic": st.session_state.get("last_actual_topic", topic),
-                    "score": score,
-                    "question": st.session_state.last_question
+                    "role": "user", "type": "answer", "content": answer
                 })
 
-                # Store full evaluation in chat_messages
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "type": "evaluation",
-                    "score": score,
-                    "what_was_right": eval_result.get("what_was_right", []),
-                    "what_was_missing": eval_result.get("what_was_missing", []),
-                    "improvement_tip": eval_result.get("improvement_tip", ""),
-                    "star_warning": round_type == "Behavioral" and not eval_result.get("star_complete"),
-                    "content": f"Score: {score}/10"
-                })
+                state["user_answer"] = answer
 
-                st.session_state.waiting_for_answer = False
+                with st.spinner("Evaluating..."):
+                    state = get_answer_graph().invoke(state)
 
-                if st.session_state.question_number >= MAX_QUESTIONS:
-                    st.session_state.session_complete = True
+                st.session_state.graph_state = state
 
-                st.rerun()
+                # Clarification
+                if state.get("clarification_response"):
+                    st.session_state.chat_messages.append({
+                        "role":     "assistant",
+                        "type":     "question",
+                        "caption":  "Interviewer clarification",
+                        "content":  state["clarification_response"],
+                        "examples": []
+                    })
+                    st.session_state.graph_state["clarification_response"] = ""
+                    st.session_state.waiting_for_answer = True
+                    st.rerun()
+
+                # Evaluation
+                else:
+                    eval_result = state.get("last_evaluation", {})
+                    score       = state.get("current_score", 0)
+
+                    st.session_state.chat_messages.append({
+                        "role":             "assistant",
+                        "type":             "evaluation",
+                        "score":            score,
+                        "what_was_right":   eval_result.get("what_was_right", []),
+                        "what_was_missing": eval_result.get("what_was_missing", []),
+                        "improvement_tip":  eval_result.get("improvement_tip", ""),
+                        "star_warning": (
+                            round_type == "Behavioral"
+                            and not eval_result.get("star_complete", True)
+                        ),
+                        "content": f"Score: {score}/10"
+                    })
+
+                    if state["question_number"] >= state["max_questions"]:
+                        st.session_state.session_complete = True
+                    else:
+                        st.session_state.waiting_for_answer = False
+
+                    st.rerun()
