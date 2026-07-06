@@ -1,0 +1,372 @@
+{
+  "timestamp": "20260628_214520",
+  "n_queries": 20,
+  "ragas_scores": {},
+  "manual_scores": {
+    "avg_topic_relevance": 0.95,
+    "avg_context_faithfulness": 0.485,
+    "avg_company_specificity": 0.01
+  },
+  "results": [
+    {
+      "query": "Amazon SWE DSA: arrays",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "arrays",
+      "retrieved_contexts": [
+        "- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "Given an array of integers, find the first pair of elements that add up to a given target sum. Return the indices of these two elements in the array.",
+      "ground_truth": "A question about array manipulation requiring hash maps or two pointers",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is about arrays, which perfectly matches the topic. However, the difficulty level and style of the question do not closely match the retrieved Amazon context, which includes a mix of medium and hard problems with varying structures. The question also lacks any Amazon-specific elements, making it a generic problem that could be from any company."
+    },
+    {
+      "query": "Amazon SWE DSA: dynamic programming",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [medium] Find the longest substring without repeating characters.\n- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "Given a string, find the length of the longest palindromic subsequence within it.",
+      "ground_truth": "A DP question about optimal substructure, like knapsack or longest subsequence",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 0.5,
+      "context_faithfulness": 0.2,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is about finding the length of the longest palindromic subsequence, which can be solved using dynamic programming, but it doesn't perfectly align with the topic as it's more of a string manipulation problem. The context faithfulness is low because the retrieved context has a mix of medium and hard problems, but none of them are directly related to string manipulation or palindromic subsequences. The company specificity is 0.0 because the question doesn't reference any Amazon-specific products, services, or engineering culture, making it a generic question that could be from any company."
+    },
+    {
+      "query": "Amazon SWE DSA: trees",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "trees",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands.\n- [medium] Find the kth largest element in an array."
+      ],
+      "response": "Given the root of a binary tree, find the sum of all node values at a given depth k, where k is a non-negative integer and the root is at depth 0.",
+      "ground_truth": "A binary tree traversal or BST question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with binary trees. However, it does not match the difficulty and style of the retrieved Amazon context, which includes a mix of hard and medium-level problems, and the question seems somewhat generic. The question does not reference any Amazon-specific products, scale, or engineering culture, making it completely generic and not company-specific."
+    },
+    {
+      "query": "Amazon SWE DSA: graphs",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "graphs",
+      "retrieved_contexts": [
+        "- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "Given a directed graph, find the number of strongly connected components.",
+      "ground_truth": "A graph traversal question using BFS or DFS",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with graphs, specifically finding the number of strongly connected components in a directed graph. However, it only somewhat matches the difficulty and style of the retrieved Amazon context, which includes a mix of medium-level questions on various topics. The question does not reference any Amazon-specific products, scale, or engineering culture, making it completely generic and not unique to Amazon."
+    },
+    {
+      "query": "Amazon SWE DSA: strings",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "strings",
+      "retrieved_contexts": [
+        "- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists."
+      ],
+      "response": "Given a string, find the first non-repeating character in it and return it. If no such character exists, return null.",
+      "ground_truth": "A string manipulation question involving sliding window or hash map",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with strings, specifically finding the first non-repeating character. However, it does not match the difficulty and style of the retrieved Amazon context, which includes a mix of medium and hard questions on various topics, including strings, arrays, and linked lists. The generated question seems somewhat simpler than the context. Additionally, the question lacks any Amazon-specific context, such as referencing Amazon's products or scale, making it a generic question that could be from any company."
+    },
+    {
+      "query": "Amazon SWE System Design: distributed systems",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "System Design",
+      "topic": "distributed systems",
+      "retrieved_contexts": [
+        "- [hard] Design a distributed rate limiter.\n- [hard] Design Amazon's order tracking system.\n- [hard] Design Amazon's product recommendation system."
+      ],
+      "response": "Design a distributed caching system for a high-traffic e-commerce website, considering factors such as data consistency, scalability, and fault tolerance.",
+      "ground_truth": "A system design question about scalability and distributed architecture",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.2,
+      "reasoning": "The generated question is perfectly on topic as it deals with designing a distributed system, which aligns with the 'distributed systems' theme. However, it only somewhat matches the difficulty and style of the retrieved Amazon context, as the context questions seem more specific to Amazon's services (order tracking, product recommendation), while the generated question is more generic. The company specificity is low because, although it mentions an 'e-commerce website', which could be related to Amazon, it does not directly reference any Amazon-specific products, services, or engineering culture, making it somewhat generic and applicable to other e-commerce companies as well."
+    },
+    {
+      "query": "Amazon SWE Behavioral: leadership",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "Behavioral",
+      "topic": "leadership",
+      "retrieved_contexts": [
+        "- [medium] Tell me about a time you disagreed with your manager.\n- [medium] Describe a situation where you had to deliver under a tight deadline.\n- [medium] Tell me about a time you failed and what you learned."
+      ],
+      "response": "Tell me about a time when you had to lead a team to resolve a complex technical issue, and how you handled the different opinions and perspectives within the team.",
+      "ground_truth": "A behavioral question testing Amazon Leadership Principles",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic regarding 'leadership' as it asks about leading a team. However, it doesn't fully match the difficulty and style of the retrieved Amazon context, which includes scenarios about disagreement, tight deadlines, and failure. The question also lacks Amazon-specific elements, making it generic and applicable to any company, not just Amazon."
+    },
+    {
+      "query": "Google SWE DSA: binary search",
+      "company": "Google",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "binary search",
+      "retrieved_contexts": [
+        "- [hard] Serialize and deserialize a binary tree.\n- [medium] Find all anagrams in a string.\n- [medium] Clone a graph.\n- [hard] Find the median of two sorted arrays.\n- [medium] Word break problem \u00e2\u20ac\u201d can a string be segmented into dictionary words?"
+      ],
+      "response": "Given a sorted array of integers and a target value, find the first occurrence of the target value in the array using binary search. If the target value is not found, return -1.",
+      "ground_truth": "A binary search question on sorted arrays or search space reduction",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it directly involves binary search. However, it does not match the difficulty and style of the retrieved Google context, which includes a mix of hard and medium questions with more complex problem structures. The question also lacks any Google-specific elements, making it a generic binary search problem that could be from any company."
+    },
+    {
+      "query": "Google SWE DSA: dynamic programming",
+      "company": "Google",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [medium] Clone a graph.\n- [hard] Serialize and deserialize a binary tree.\n- [medium] Word break problem \u00e2\u20ac\u201d can a string be segmented into dictionary words?\n- [medium] Find all anagrams in a string.\n- [hard] Find the median of two sorted arrays."
+      ],
+      "response": "Given a 2D grid of integers, find the length of the longest increasing path in the grid, where a path can be constructed by moving either up, down, left, or right to an adjacent cell and each cell's value must be greater than the previous cell's value.",
+      "ground_truth": "A DP question about memoization or tabulation",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is about finding the longest increasing path in a 2D grid, which is a classic dynamic programming problem, hence the topic relevance is 1.0. However, the context faithfulness is 0.5 because the difficulty level is somewhat similar to the retrieved context, but the problem structure is not as complex as some of the hard problems in the context. The company specificity is 0.0 because the question does not reference any Google-specific products, scale, or engineering culture, making it a generic question that could be from any company."
+    },
+    {
+      "query": "Google SWE System Design: search",
+      "company": "Google",
+      "role": "SWE",
+      "round": "System Design",
+      "topic": "search",
+      "retrieved_contexts": [
+        "- [hard] Design Google Search autocomplete.\n- [hard] Design YouTube's video upload and streaming pipeline.\n- [hard] Design Google Maps routing system."
+      ],
+      "response": "Design a search engine for an e-commerce platform that can handle a large volume of product searches and provide relevant results based on product attributes such as price, brand, and category.",
+      "ground_truth": "A system design question about search infrastructure at scale",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it is about designing a search engine. However, it does not match the difficulty and style of the retrieved Google context, which includes designing Google Search autocomplete and YouTube's video upload and streaming pipeline, indicating a higher level of complexity. The question also lacks company specificity as it does not reference any Google products or scale, making it a generic question that could be from any company."
+    },
+    {
+      "query": "Microsoft SWE DSA: linked lists",
+      "company": "Microsoft",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "linked lists",
+      "retrieved_contexts": [
+        "- [medium] Reverse a linked list in groups of k.\n- [easy] Implement a stack using queues.\n- [medium] Find all subsets of a set.\n- [medium] Find the longest common subsequence of two strings.\n- [hard] Find the minimum window substring."
+      ],
+      "response": "Given a linked list, find the middle node of the list. If the list has an even number of nodes, return the second middle node.",
+      "ground_truth": "A linked list manipulation question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with linked lists. However, it does not match the difficulty and style of the retrieved Microsoft context, which includes medium to hard level questions. The generated question seems easier compared to the context. Additionally, the question lacks Microsoft specificity as it does not reference any Microsoft products, scale, or engineering culture, making it a generic question that could be from any company."
+    },
+    {
+      "query": "Microsoft SWE DSA: trees",
+      "company": "Microsoft",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "trees",
+      "retrieved_contexts": [
+        "- [hard] Find the minimum window substring.\n- [easy] Implement a stack using queues.\n- [medium] Reverse a linked list in groups of k.\n- [medium] Find the longest common subsequence of two strings.\n- [medium] Find all subsets of a set."
+      ],
+      "response": "Given a binary tree, find the sum of all nodes at each level and return these sums in an array, where the index of the array represents the level of the tree (0-indexed).",
+      "ground_truth": "A tree traversal or balancing question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with binary trees. However, it does not match the difficulty and style of the retrieved Microsoft context, which includes a mix of easy, medium, and hard questions on various data structures and algorithms, but the generated question seems to be of medium difficulty. The question does not reference any Microsoft-specific products, scale, or engineering culture, making it completely generic and not company-specific."
+    },
+    {
+      "query": "Adobe SWE DSA: arrays",
+      "company": "Adobe",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "arrays",
+      "retrieved_contexts": [
+        "- [hard] Find the largest rectangle in a histogram.\n- [easy] Find the number of ways to reach the top of a staircase.\n- [medium] Given an image matrix, rotate it 90 degrees.\n- [easy] Implement run-length encoding.\n- [hard] Given a BST, convert it to a sorted doubly linked list."
+      ],
+      "response": "Given an array of integers, find the maximum sum of a subarray of size k",
+      "ground_truth": "An array manipulation question relevant to image processing",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with arrays, but it only loosely matches the difficulty and style of the retrieved Adobe context, which includes a mix of easy, medium, and hard problems. The question does not reference Adobe's products, scale, or engineering culture, making it completely generic and not Adobe-specific."
+    },
+    {
+      "query": "Adobe SWE DSA: dynamic programming",
+      "company": "Adobe",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [easy] Implement run-length encoding.\n- [hard] Given a BST, convert it to a sorted doubly linked list.\n- [hard] Find the largest rectangle in a histogram.\n- [easy] Find the number of ways to reach the top of a staircase.\n- [medium] Given an image matrix, rotate it 90 degrees."
+      ],
+      "response": "Given a 2D grid where each cell represents a cost, find the minimum cost path from the top-left cell to the bottom-right cell, where you can only move right or down at any point in time",
+      "ground_truth": "A DP question about optimization",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is a classic dynamic programming problem, making it perfectly on topic. However, its difficulty level and style do not closely match the retrieved Adobe context, which includes a mix of easy, medium, and hard problems. The question does not reference Adobe's products or engineering culture, making it completely generic and lacking company specificity."
+    },
+    {
+      "query": "Generic SWE DSA: sorting",
+      "company": "Generic",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "sorting",
+      "retrieved_contexts": [
+        "- [medium] Detect a cycle in a linked list.\n- [medium] Find the shortest path in an unweighted graph.\n- [easy] Find the two numbers in an array that sum to a target.\n- [easy] Find the height of a binary tree.\n- [easy] Check if a string is a palindrome."
+      ],
+      "response": "Given an array of integers, sort it using a custom sorting algorithm that has a time complexity of O(n log n) and returns the sorted array, then find the median of the sorted array",
+      "ground_truth": "A sorting algorithm question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it involves sorting an array of integers. However, it only partially matches the difficulty and style of the retrieved Generic context, as the context contains a mix of easy and medium-level questions, and the generated question's requirement for a custom O(n log n) sorting algorithm and finding the median may be more challenging than some of the context questions. The question lacks any Generic-specific elements, making it completely generic and not unique to the company."
+    },
+    {
+      "query": "Generic Data Technical: SQL",
+      "company": "Generic",
+      "role": "Data",
+      "round": "Technical",
+      "topic": "SQL",
+      "retrieved_contexts": [
+        "- [easy] Write a SQL query to find duplicate records in a table.\n- [medium] How would you handle missing values in a dataset?\n- [easy] Explain the difference between supervised and unsupervised learning."
+      ],
+      "response": "Write a SQL query to find the top 3 products with the highest total sales for each region, given a table 'sales' with columns 'region', 'product', and 'sales_amount'",
+      "ground_truth": "A SQL query question with joins or window functions",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic about SQL as it requires writing a SQL query. However, it does not match the difficulty and style of the retrieved Generic context, which includes easier questions about finding duplicate records and explaining learning types. The question also lacks Generic-specific context, as it could be applied to any company with sales data, and does not reference any Generic products or engineering culture."
+    },
+    {
+      "query": "Generic Product Case: product metrics",
+      "company": "Generic",
+      "role": "Product",
+      "round": "Case",
+      "topic": "product metrics",
+      "retrieved_contexts": [
+        "- [hard] How would you prioritize a product roadmap with limited engineering resources?\n- [medium] How would you improve Spotify's discovery feature?\n- [medium] Design a feature for Instagram to reduce doomscrolling."
+      ],
+      "response": "Design a dashboard to measure the effectiveness of a new e-commerce feature, including the key metrics and KPIs you would track",
+      "ground_truth": "A product metrics or success criteria question",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it directly asks about designing a dashboard to measure the effectiveness of a new e-commerce feature, including key metrics and KPIs, which is a central aspect of product metrics. However, the context faithfulness is somewhat similar because the difficulty level seems to be more aligned with a medium-level question, whereas the provided context includes a mix of hard and medium questions. The company specificity is completely generic as it does not reference any Generic-specific products, scale, or engineering culture, making it applicable to any e-commerce company, not just Generic."
+    },
+    {
+      "query": "Generic Analyst Technical: SQL",
+      "company": "Generic",
+      "role": "Analyst",
+      "round": "Technical",
+      "topic": "SQL",
+      "retrieved_contexts": [
+        "- [medium] Write a SQL query to calculate month-over-month growth.\n- [medium] How would you build a dashboard to track user retention?\n- [easy] Explain the difference between correlation and causation with an example."
+      ],
+      "response": "Write a SQL query to find the top 3 products by total revenue for each region, assuming you have a table called 'orders' with columns 'region', 'product', and 'revenue'.",
+      "ground_truth": "A SQL aggregation or analytics question",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it requires writing a SQL query, which is directly related to the 'SQL' topic. However, it does not closely match the difficulty and style of the retrieved Generic context, which includes questions about month-over-month growth and user retention dashboards. The question also lacks company specificity, as it does not reference any Generic products, scale, or engineering culture, making it a generic SQL question that could be from any company."
+    },
+    {
+      "query": "Amazon SWE DSA: heap",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "heap",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "Given an array of integers, find the median of the array using a heap data structure. The array is not sorted and can contain duplicate elements.",
+      "ground_truth": "A heap or priority queue question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is perfectly on topic as it specifically asks about using a heap data structure to find the median of an array. However, the context faithfulness is only 0.5 because the retrieved Amazon context contains a mix of hard and medium difficulty questions, and the generated question seems to be of medium difficulty but does not particularly stand out in terms of complexity or style. The company specificity is 0.0 because the question does not reference any Amazon-specific products, services, or engineering culture, making it a generic question that could be asked in any company's interview."
+    },
+    {
+      "query": "Amazon SWE DSA: sliding window",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "sliding window",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "Given an array of integers and an integer k, find the maximum sum of a subarray of size k.",
+      "ground_truth": "A sliding window question on arrays or strings",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 0.5,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.0,
+      "reasoning": "The generated question is loosely related to the 'sliding window' topic as it involves finding a subarray of size k, which can be solved using a sliding window approach. However, it does not explicitly require the use of a sliding window technique. The question's difficulty level is somewhat similar to the retrieved Amazon context, but it does not match the style of the provided examples. The question is completely generic and lacks any Amazon-specific context or reference to the company's products or engineering culture."
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "timestamp": "20260706_134441",
+  "n_queries": 20,
+  "ragas_scores": {},
+  "manual_scores": {
+    "avg_topic_relevance": 0.94,
+    "avg_context_faithfulness": 0.525,
+    "avg_company_specificity": 0.84
+  },
+  "results": [
+    {
+      "query": "Amazon SWE DSA: arrays",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "arrays",
+      "retrieved_contexts": [
+        "- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "In the Amazon SageMaker Autopilot system, we often deal with large arrays of hyperparameter tuning results. Given an array of integers representing the performance metrics of different models, write a function to find the longest subarray with a sum that is less than or equal to a given threshold, which represents the maximum allowed latency in our system. The function should return the length of the longest subarray.",
+      "ground_truth": "A question about array manipulation requiring hash maps or two pointers",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it deals with arrays and subarrays. However, the context faithfulness is 0.5 because the difficulty level is somewhat similar to the retrieved context, but the problem structure is not exactly the same as the provided examples. The company specificity is 0.8 because the question references Amazon SageMaker Autopilot, which is an Amazon product, and the problem is related to hyperparameter tuning results, making it feel like a real Amazon interview question. The only reason it's not 1.0 is that the question could potentially be adapted to other companies with similar machine learning platforms."
+    },
+    {
+      "query": "Amazon SWE DSA: dynamic programming",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [medium] Find the longest substring without repeating characters.\n- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "Amazon's recommendation system suggests products to customers based on their browsing history. Given a customer's browsing history as a sequence of product IDs, determine the length of the longest subsequence where the customer has browsed at least two different product categories. Product categories can be determined by the product ID, where the category is the first digit of the product ID. For example, products with IDs 123, 145, and 167 belong to category 1. Use dynamic programming to solve this problem.",
+      "ground_truth": "A DP question about optimal substructure, like knapsack or longest subsequence",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 0.5,
+      "context_faithfulness": 0.2,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is loosely related to dynamic programming as it involves finding the length of the longest subsequence, but it doesn't explicitly require the typical dynamic programming approach of breaking down the problem into smaller subproblems and storing their solutions. The context faithfulness is low because the retrieved context contains more traditional algorithmic problems, whereas the generated question is more focused on a specific business scenario. However, the company specificity is high because the question references Amazon's recommendation system and product categories, making it feel like a real Amazon interview question."
+    },
+    {
+      "query": "Amazon SWE DSA: trees",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "trees",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands.\n- [medium] Find the kth largest element in an array."
+      ],
+      "response": "In Amazon's product catalog system, products are organized in a hierarchical tree structure, where each node represents a product category. Given the root of this tree, find the path from the root to the node representing a specific product category, such as 'Electronics'. The tree nodes have a 'name' field and a 'children' field, which is a list of child nodes. The path should be represented as a list of node names from the root to the target node. For example, the path to 'Electronics' might be ['Root', 'Department', 'Electronics']. Write a function to find this path.",
+      "ground_truth": "A binary tree traversal or BST question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it deals with a tree data structure. However, the context faithfulness is somewhat limited because the question's difficulty level seems to be on the easier side compared to the provided Amazon context, which includes harder problems like merging k sorted linked lists. The company specificity is high because the question references Amazon's product catalog system, making it feel like a real Amazon interview question, although it could be made more specific by incorporating Amazon-specific technologies or services like AWS."
+    },
+    {
+      "query": "Amazon SWE DSA: graphs",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "graphs",
+      "retrieved_contexts": [
+        "- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "In Amazon's logistics network, packages are transported between warehouses and delivery stations. Given a graph representing the transportation network where each node is a warehouse or delivery station and each edge represents a transportation route with a given capacity, find the maximum flow of packages that can be transported from the main warehouse to all delivery stations in a single day. The graph has n nodes and m edges, and each edge has a capacity of c units. Write an algorithm to calculate the maximum flow.",
+      "ground_truth": "A graph traversal question using BFS or DFS",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it deals with graphs, specifically finding the maximum flow in a graph. The context faithfulness is somewhat similar as the question has a medium to hard complexity level, but it doesn't closely match the structure of the retrieved Amazon context questions. The company specificity is high as the question references Amazon's logistics network and delivery stations, making it feel like a real Amazon interview question, although it could be slightly more tailored to Amazon's specific engineering culture or products."
+    },
+    {
+      "query": "Amazon SWE DSA: strings",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "strings",
+      "retrieved_contexts": [
+        "- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists."
+      ],
+      "response": "In the Amazon Alexa system, when a user searches for a song, the search query is matched against a massive database of song titles. Given a search query string and a list of song titles, find all song titles that are substrings of the search query string. For example, if the search query is 'never gonna give you up' and the song titles are ['never', 'gonna', 'give', 'up', 'you'], return ['never', 'gonna', 'give', 'you', 'up']. The search query string can be up to 1000 characters long and the list of song titles can have up to 10000 song titles.",
+      "ground_truth": "A string manipulation question involving sliding window or hash map",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it deals with string matching and substrings, which is a fundamental concept in the 'strings' domain. However, the context faithfulness score is 0.5 because the question's difficulty level seems somewhat easier than the medium to hard level questions provided in the Amazon context. The company specificity score is 0.8 as the question references Amazon's Alexa system, giving it a clear Amazon flavor, but it could be made more specific by incorporating details about the scale or engineering culture of Amazon."
+    },
+    {
+      "query": "Amazon SWE System Design: distributed systems",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "System Design",
+      "topic": "distributed systems",
+      "retrieved_contexts": [
+        "- [hard] Design a distributed rate limiter.\n- [hard] Design Amazon's order tracking system.\n- [hard] Design Amazon's product recommendation system."
+      ],
+      "response": "Design a scalable and fault-tolerant system to handle the real-time updates of Amazon Alexa's skill enablement status across millions of devices, ensuring consistency and high availability even in the presence of network partitions and device failures.",
+      "ground_truth": "A system design question about scalability and distributed architecture",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.9,
+      "reasoning": "The generated question is highly relevant to distributed systems as it involves designing a scalable and fault-tolerant system to handle real-time updates across millions of devices. The question's complexity level and problem structure are somewhat similar to the retrieved Amazon context, such as designing a distributed rate limiter or Amazon's order tracking system, but it may be slightly more specific to Alexa's skill enablement status. The question is also highly specific to Amazon, referencing Alexa and the need for high availability and consistency, which aligns with Amazon's engineering culture and scale."
+    },
+    {
+      "query": "Amazon SWE Behavioral: leadership",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "Behavioral",
+      "topic": "leadership",
+      "retrieved_contexts": [
+        "- [medium] Tell me about a time you disagreed with your manager.\n- [medium] Describe a situation where you had to deliver under a tight deadline.\n- [medium] Tell me about a time you failed and what you learned."
+      ],
+      "response": "Tell me about a time when you had to lead a team to resolve a high-priority issue with an Amazon Web Service, such as a sudden increase in latency with Amazon S3 or a scalability problem with Amazon DynamoDB, and how you coordinated with other engineers and stakeholders to resolve the issue quickly and minimize customer impact.",
+      "ground_truth": "A behavioral question testing Amazon Leadership Principles",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 0.8,
+      "context_faithfulness": 0.4,
+      "company_specificity": 0.9,
+      "reasoning": "The generated question is mostly relevant to leadership as it involves leading a team to resolve an issue, but it could be improved to focus more on leadership skills such as decision-making, communication, and delegation. The question does not closely match the difficulty and style of the retrieved Amazon context, which includes more general scenarios, whereas the generated question is quite specific and technical. However, the question is very company-specific as it references Amazon Web Services like S3 and DynamoDB, making it feel like a real Amazon interview question."
+    },
+    {
+      "query": "Google SWE DSA: binary search",
+      "company": "Google",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "binary search",
+      "retrieved_contexts": [
+        "- [hard] Serialize and deserialize a binary tree.\n- [medium] Find all anagrams in a string.\n- [medium] Clone a graph.\n- [hard] Find the median of two sorted arrays.\n- [medium] Word break problem \u00e2\u20ac\u201d can a string be segmented into dictionary words?"
+      ],
+      "response": "In Google's search indexing system, we need to efficiently find the position of a specific keyword in a large sorted array of keywords. The array is so large that it doesn't fit into memory, so we need to use a modified binary search algorithm that can work with a disk-based storage system. Design a binary search algorithm that can find the position of a keyword in a sorted array of size 10^12, stored on disk, with a block size of 4096 bytes. Assume that each keyword is a string of average length 20 bytes.",
+      "ground_truth": "A binary search question on sorted arrays or search space reduction",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 1.0,
+      "reasoning": "The generated question is perfectly on topic as it directly involves designing a binary search algorithm. However, its complexity and style somewhat differ from the retrieved Google context, which includes a mix of medium and hard problems with varying topics. The question's reference to Google's search indexing system and the need to handle a large sorted array on disk gives it a strong company-specific flavor, making it clearly relevant to Google's engineering challenges."
+    },
+    {
+      "query": "Google SWE DSA: dynamic programming",
+      "company": "Google",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [medium] Clone a graph.\n- [hard] Serialize and deserialize a binary tree.\n- [medium] Word break problem \u00e2\u20ac\u201d can a string be segmented into dictionary words?\n- [medium] Find all anagrams in a string.\n- [hard] Find the median of two sorted arrays."
+      ],
+      "response": "In Google Maps, we want to optimize the route planning algorithm to minimize the total time spent in traffic. Given a directed graph representing the road network, where each edge has a weight representing the expected travel time, and a set of intermediate stops that the driver must visit, find the shortest path that visits all the stops and returns to the starting point. The path should be computed using dynamic programming, taking into account the traffic patterns and time-dependent weights of the edges. Assume that the graph has n nodes and m edges, and the number of intermediate stops is k.",
+      "ground_truth": "A DP question about memoization or tabulation",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 1.0,
+      "reasoning": "The generated question is perfectly on topic as it requires the use of dynamic programming to solve the shortest path problem. However, the context faithfulness score is 0.5 because the question's difficulty level seems to be harder than the medium-level questions provided in the context, but it still shares some similarities with the 'Find the median of two sorted arrays' problem in terms of complexity. The company specificity score is 1.0 because the question references Google Maps, which is a Google product, and involves optimizing route planning, making it a realistic Google interview question."
+    },
+    {
+      "query": "Google SWE System Design: search",
+      "company": "Google",
+      "role": "SWE",
+      "round": "System Design",
+      "topic": "search",
+      "retrieved_contexts": [
+        "- [hard] Design Google Search autocomplete.\n- [hard] Design YouTube's video upload and streaming pipeline.\n- [hard] Design Google Maps routing system."
+      ],
+      "response": "Design a system to index and serve Google News article recommendations, considering factors such as article relevance, user location, and query context, while integrating with Google's existing search infrastructure and handling a large volume of user requests, similar to Google Search's current query handling of over 40,000 queries per second.",
+      "ground_truth": "A system design question about search infrastructure at scale",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 0.5,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.9,
+      "reasoning": "The generated question is loosely related to 'search' as it involves indexing and serving article recommendations, but it's not a traditional search problem. The question matches the difficulty and style of the retrieved Google context, as it involves designing a complex system that handles a large volume of user requests, similar to the provided examples. The question is also very Google-specific, as it references Google News and integrates with Google's existing search infrastructure, making it feel like a real Google interview question."
+    },
+    {
+      "query": "Microsoft SWE DSA: linked lists",
+      "company": "Microsoft",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "linked lists",
+      "retrieved_contexts": [
+        "- [medium] Reverse a linked list in groups of k.\n- [easy] Implement a stack using queues.\n- [medium] Find all subsets of a set.\n- [medium] Find the longest common subsequence of two strings.\n- [hard] Find the minimum window substring."
+      ],
+      "response": "In Microsoft Azure's cloud-based storage system, data is often stored in a linked list of blocks. Each block has a unique identifier and a pointer to the next block. Given a linked list of blocks and an integer k, write a function to reverse every k blocks in the linked list while maintaining the overall order of the blocks. For example, if the linked list is 1 -> 2 -> 3 -> 4 -> 5 -> 6 and k = 2, the reversed linked list should be 2 -> 1 -> 4 -> 3 -> 6 -> 5. This function will be used in Azure's data management system to optimize data retrieval and storage.",
+      "ground_truth": "A linked list manipulation question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.9,
+      "reasoning": "The generated question is perfectly on topic as it deals with reversing a linked list in groups of k, which is a classic linked list problem. The context faithfulness score is 0.8 because the question matches the medium difficulty level of the retrieved Microsoft context, but the style is slightly different as the context includes a variety of problems, not just linked lists. The company specificity score is 0.9 because the question references Microsoft Azure's cloud-based storage system, making it feel like a real Microsoft interview question that involves the company's products and scale."
+    },
+    {
+      "query": "Microsoft SWE DSA: trees",
+      "company": "Microsoft",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "trees",
+      "retrieved_contexts": [
+        "- [hard] Find the minimum window substring.\n- [easy] Implement a stack using queues.\n- [medium] Reverse a linked list in groups of k.\n- [medium] Find the longest common subsequence of two strings.\n- [medium] Find all subsets of a set."
+      ],
+      "response": "In the Azure File Storage system, a hierarchical file structure is represented as a tree where each node represents a file or directory. Given a tree representing the file structure, find the path of the directory that has the maximum total size of files within it, assuming each file has a size associated with it. The size of a directory is the sum of the sizes of all files within it, including files in its subdirectories. If there are multiple directories with the same maximum size, return the path of the one that appears first in a pre-order traversal of the tree.",
+      "ground_truth": "A tree traversal or balancing question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 1.0,
+      "reasoning": "The generated question is perfectly on topic as it deals with a tree data structure. However, its context faithfulness is somewhat limited because the difficulty level seems higher than the medium-level questions provided in the context, and the style, while similar in requiring traversal and calculation, involves more complex considerations like file sizes and directory paths. The company specificity is high because the question references Azure File Storage, making it clearly Microsoft-specific and relevant to their products and services."
+    },
+    {
+      "query": "Adobe SWE DSA: arrays",
+      "company": "Adobe",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "arrays",
+      "retrieved_contexts": [
+        "- [hard] Find the largest rectangle in a histogram.\n- [easy] Find the number of ways to reach the top of a staircase.\n- [medium] Given an image matrix, rotate it 90 degrees.\n- [easy] Implement run-length encoding.\n- [hard] Given a BST, convert it to a sorted doubly linked list."
+      ],
+      "response": "In Adobe Photoshop, the undo history is stored as an array of states. Given an array of states where each state is a string representing the current state of the image, and a target state, write a function to find the minimum number of undo operations required to reach the target state from the current state. Assume that the undo history array is not empty and the target state exists in the array.",
+      "ground_truth": "An array manipulation question relevant to image processing",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it deals with arrays, specifically an array of states. However, the context faithfulness is somewhat lower because the difficulty level of the generated question seems easier compared to the hard and medium questions in the retrieved Adobe context. The company specificity is high because the question references Adobe Photoshop, making it feel like a real Adobe interview question, but it could be slightly more specific to Adobe's engineering culture or scale."
+    },
+    {
+      "query": "Adobe SWE DSA: dynamic programming",
+      "company": "Adobe",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [easy] Implement run-length encoding.\n- [hard] Given a BST, convert it to a sorted doubly linked list.\n- [hard] Find the largest rectangle in a histogram.\n- [easy] Find the number of ways to reach the top of a staircase.\n- [medium] Given an image matrix, rotate it 90 degrees."
+      ],
+      "response": "In Adobe Acrobat, users can highlight and annotate PDF documents. Suppose we have a large PDF document with multiple pages, and we want to find the optimal way to allocate annotations across pages to minimize the total number of pages that need to be re-rendered. Given a list of page sizes and a list of annotation sizes, write a dynamic programming algorithm to determine the minimum number of pages required to fit all annotations without exceeding the page size limit. Assume each annotation can only be placed on one page.",
+      "ground_truth": "A DP question about optimization",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it requires the use of dynamic programming to solve the problem of allocating annotations across pages. However, the context faithfulness score is 0.5 because the difficulty level of the generated question seems to be harder than the easy and medium questions provided in the context, but not as hard as the hard questions. The company specificity score is 0.8 because the question references Adobe Acrobat and PDF documents, which is specific to Adobe's products, but the problem itself could be applied to other companies that work with documents and annotations."
+    },
+    {
+      "query": "Generic SWE DSA: sorting",
+      "company": "Generic",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "sorting",
+      "retrieved_contexts": [
+        "- [medium] Detect a cycle in a linked list.\n- [medium] Find the shortest path in an unweighted graph.\n- [easy] Find the two numbers in an array that sum to a target.\n- [easy] Find the height of a binary tree.\n- [easy] Check if a string is a palindrome."
+      ],
+      "response": "Generic's e-commerce platform handles millions of customer reviews for its products. Given a list of reviews with their corresponding ratings and timestamps, write an efficient algorithm to sort these reviews in descending order of their ratings and then by their timestamps. The sorted reviews will be displayed on the product page to help customers make informed purchasing decisions.",
+      "ground_truth": "A sorting algorithm question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it involves sorting a list of reviews based on ratings and timestamps. However, the context faithfulness score is 0.5 because the question's difficulty level seems to be easier compared to the retrieved context, which includes medium-level questions like detecting a cycle in a linked list. The company specificity score is 0.8 as the question references Generic's e-commerce platform and handles millions of customer reviews, making it feel like a real Generic interview question, but it could be slightly more specific to Generic's products or engineering culture."
+    },
+    {
+      "query": "Generic Data Technical: SQL",
+      "company": "Generic",
+      "role": "Data",
+      "round": "Technical",
+      "topic": "SQL",
+      "retrieved_contexts": [
+        "- [easy] Write a SQL query to find duplicate records in a table.\n- [medium] How would you handle missing values in a dataset?\n- [easy] Explain the difference between supervised and unsupervised learning."
+      ],
+      "response": "Write a SQL query to optimize the retrieval of customer purchase history from Generic's e-commerce database, which contains over 10 million customer records and 50 million order records, and provide an explanation of the indexing strategy you would use to improve query performance.",
+      "ground_truth": "A SQL query question with joins or window functions",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.2,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic about SQL as it asks for a SQL query to optimize the retrieval of customer purchase history. However, it does not match the difficulty and style of the retrieved Generic context, which includes easier questions about finding duplicate records and explaining the difference between supervised and unsupervised learning. The question does feel like a real Generic interview question as it references Generic's e-commerce database and a large scale of customer and order records, making it company-specific."
+    },
+    {
+      "query": "Generic Product Case: product metrics",
+      "company": "Generic",
+      "role": "Product",
+      "round": "Case",
+      "topic": "product metrics",
+      "retrieved_contexts": [
+        "- [hard] How would you prioritize a product roadmap with limited engineering resources?\n- [medium] How would you improve Spotify's discovery feature?\n- [medium] Design a feature for Instagram to reduce doomscrolling."
+      ],
+      "response": "Design a metrics dashboard for Generic's e-commerce platform to measure the effectiveness of product recommendations, considering factors such as click-through rates, conversion rates, and average order value, and describe how you would use these metrics to inform product decisions.",
+      "ground_truth": "A product metrics or success criteria question",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.5,
+      "reasoning": "The generated question is perfectly on topic as it directly addresses 'product metrics' by designing a metrics dashboard for Generic's e-commerce platform. However, it doesn't perfectly match the difficulty and style of the retrieved context, which includes a mix of hard and medium-level questions with diverse topics, whereas the generated question seems more focused and specific. The company specificity is somewhat acceptable as it references Generic's e-commerce platform, but it lacks depth in terms of scale or engineering culture specifics that would make it unmistakably Generic."
+    },
+    {
+      "query": "Generic Analyst Technical: SQL",
+      "company": "Generic",
+      "role": "Analyst",
+      "round": "Technical",
+      "topic": "SQL",
+      "retrieved_contexts": [
+        "- [medium] Write a SQL query to calculate month-over-month growth.\n- [medium] How would you build a dashboard to track user retention?\n- [easy] Explain the difference between correlation and causation with an example."
+      ],
+      "response": "Write a SQL query to calculate the average order value for each region in Generic's e-commerce platform, assuming the order data is stored in a table named 'orders' with columns 'order_id', 'customer_id', 'order_date', 'total_amount', and 'region', and the customer data is stored in a table named 'customers' with columns 'customer_id' and 'region'. The query should handle cases where a customer has placed orders in multiple regions.",
+      "ground_truth": "A SQL aggregation or analytics question",
+      "rag_source": "preloaded",
+      "n_results": 3,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it requires writing a SQL query, which aligns with the 'SQL' theme. However, the context faithfulness score is 0.5 because the question's difficulty level seems slightly higher than the medium-level questions provided in the context, and it doesn't closely resemble the structure of the given questions. The company specificity score is 0.8 because the question references Generic's e-commerce platform, which suggests it is tailored to the company, but it could be slightly more specific to feel uniquely Generic."
+    },
+    {
+      "query": "Amazon SWE DSA: heap",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "heap",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "{\n    \"question\": \"In the Amazon EC2 Auto Scaling system, we need to efficiently manage the priority of instances to be scaled. Given a list of EC2 instances with their priority scores, write a program to find the top k instances with the highest priority scores using a heap data structure. The input will be a list of tuples, where each tuple contains the instance ID and its priority score. The output should be a list of the top k instance IDs.\",\n    \"difficulty\": \"medium\",\n    \"topic\": \"heap\",\n    \"examples\": [\n        {\"input\": [[(\"i-123\", 10), (\"i-456\", 5), (\"i-789\", 15)], 2], \"output\": [\"i-789\", \"i-123\"]},\n        {\"input\": [[(\"i-101\", 8), (\"i-202\", 12), (\"i-303\", 6)], 1], \"output\": [\"i-202\"]}\n    ]\n}",
+      "ground_truth": "A heap or priority queue question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.9,
+      "reasoning": "The generated question is perfectly on topic as it involves using a heap data structure to find the top k instances with the highest priority scores. The difficulty level is medium, which matches the complexity level of most questions in the retrieved Amazon context. The question also references Amazon's EC2 Auto Scaling system, making it company-specific and relevant to Amazon's products and scale. However, the context faithfulness score is not 1.0 because the question structure is slightly different from the examples in the retrieved context, which mostly involve finding elements in arrays or strings, whereas this question involves finding top k instances based on priority scores."
+    },
+    {
+      "query": "Amazon SWE DSA: sliding window",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "sliding window",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "In Amazon's Fulfillment by Amazon (FBA) system, we need to monitor the average shipment weight of packages over a certain time window to ensure compliance with shipping regulations. Given a stream of shipment weights and a window size (representing a time period, e.g., the last 100 shipments), write an algorithm to calculate the average shipment weight over the current window. The algorithm should be efficient enough to handle a high-volume stream of shipments, such as those processed by Amazon's logistics systems, which can handle millions of packages per day.",
+      "ground_truth": "A sliding window question on arrays or strings",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.5,
+      "company_specificity": 0.8,
+      "reasoning": "The generated question is perfectly on topic as it involves a 'sliding window' to calculate the average shipment weight over a certain time period. However, the context faithfulness is somewhat similar because the difficulty level of the generated question seems easier compared to the retrieved Amazon context, which includes harder problems like merging k sorted linked lists. The company specificity is high because the question references Amazon's Fulfillment by Amazon (FBA) system and the scale of handling millions of packages per day, making it feel like a real Amazon interview question."
+    }
+  ]
+}

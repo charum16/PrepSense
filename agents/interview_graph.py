@@ -159,19 +159,20 @@ def generate_question_node(state: InterviewState) -> dict:
 "{seed_question}"
 
 Your task: Create a NEW question that:
-1. Tests the same algorithmic concept but with a different scenario or constraint
-2. MUST be about {topic} specifically — if the seed question above is about a different topic, ignore it and create a fresh {topic} question instead
+1. Tests the same algorithmic concept about {topic} but with a different scenario or constraint
+2. MUST be about {topic} — if the seed question is about a different topic, ignore it and create a fresh {topic} question
 3. Is at {difficulty} difficulty
-4. Is NOT the same as any of these already-asked questions:
+4. Frames the problem in {company}'s real engineering context — reference {company}'s actual products, systems, or scale (e.g. for Amazon: order processing, Prime, AWS, product recommendations; for Google: Search, Maps, YouTube; for Microsoft: Azure, Office, Teams; for Adobe: image processing, PDF rendering, Creative Cloud)
+5. Is NOT the same as any of these already-asked questions:
 {asked_str}
 
 For DSA questions include exactly 2 concrete input/output examples.
 
 Respond in this exact JSON only:
 {{
-    "question": "your new question here",
+    "question": "your new question here — framed in {company} context",
     "difficulty": "{difficulty}",
-    "topic": "specific topic name",
+    "topic": "{topic}",
     "examples": [
         {{"input": "...", "output": "..."}},
         {{"input": "...", "output": "..."}}
@@ -405,3 +406,21 @@ def create_initial_state(company: str, role: str, round_type: str,
     }
 
 
+# ── Test ───────────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    q_graph = build_question_graph()
+    a_graph = build_answer_graph()
+    state   = create_initial_state("Amazon", "SWE", "DSA", "arrays")
+
+    state = q_graph.invoke(state)
+    print(f"Q{state['question_number']} [{state['current_difficulty']}]:")
+    print(state['current_question'])
+    print(f"Examples: {state['current_examples']}")
+
+    state["user_answer"] = "I would use a two pointer approach."
+    state = a_graph.invoke(state)
+    print(f"\nScore: {state['current_score']}")
+
+    state = q_graph.invoke(state)
+    print(f"\nQ{state['question_number']} [{state['current_difficulty']}]:")
+    print(state['current_question'])

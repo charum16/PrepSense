@@ -1,0 +1,102 @@
+{
+  "timestamp": "20260628_202219",
+  "n_queries": 5,
+  "ragas_scores": {},
+  "manual_scores": {
+    "avg_topic_relevance": 1.0,
+    "avg_context_faithfulness": 0.8,
+    "avg_company_specificity": 0.6
+  },
+  "results": [
+    {
+      "query": "Amazon SWE DSA: arrays",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "arrays",
+      "retrieved_contexts": [
+        "- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "Given an array of integers, find the first pair of elements that add up to a given target sum. Return the indices of these two elements in the array.",
+      "ground_truth": "A question about array manipulation requiring hash maps or two pointers",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.6,
+      "reasoning": "The generated question is about arrays, matching the topic. It has a similar difficulty level to the retrieved context, which is mostly medium. The style is also similar, focusing on a specific problem to be solved. However, the question is still somewhat generic and could be from any company, not just Amazon."
+    },
+    {
+      "query": "Amazon SWE DSA: dynamic programming",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "dynamic programming",
+      "retrieved_contexts": [
+        "- [medium] Find the longest substring without repeating characters.\n- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands."
+      ],
+      "response": "Given a string, find the length of the longest palindromic subsequence",
+      "ground_truth": "A DP question about optimal substructure, like knapsack or longest subsequence",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.6,
+      "reasoning": "The generated question is about dynamic programming, as finding the longest palindromic subsequence can be solved using dynamic programming. The difficulty level is medium, matching some of the context. However, the style and company specificity could be improved to better match Amazon's interview style."
+    },
+    {
+      "query": "Amazon SWE DSA: trees",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "trees",
+      "retrieved_contexts": [
+        "- [hard] Merge k sorted linked lists.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Given a matrix, find the number of islands.\n- [medium] Find the kth largest element in an array."
+      ],
+      "response": "Given the root of a binary tree, find the path from the root to a given node with a specific value, and return the path as a list of node values. If the node is not found, return an empty list.",
+      "ground_truth": "A binary tree traversal or BST question",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.6,
+      "reasoning": "The generated question is about binary trees, which is perfectly on topic. The difficulty level is medium, matching the style of the retrieved context. However, the question is still somewhat generic and could be asked in interviews for other companies, not just Amazon."
+    },
+    {
+      "query": "Amazon SWE DSA: graphs",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "graphs",
+      "retrieved_contexts": [
+        "- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists.\n- [medium] Find the kth largest element in an array.\n- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters."
+      ],
+      "response": "Given a directed graph, find the number of strongly connected components.",
+      "ground_truth": "A graph traversal question using BFS or DFS",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.6,
+      "reasoning": "The generated question is about graphs, which is perfectly on topic. The difficulty level is medium to hard, which matches the context. However, the style is slightly different from the context, which is mostly about arrays and strings. The question feels like it could be from an Amazon interview, but it's not extremely company-specific."
+    },
+    {
+      "query": "Amazon SWE DSA: strings",
+      "company": "Amazon",
+      "role": "SWE",
+      "round": "DSA",
+      "topic": "strings",
+      "retrieved_contexts": [
+        "- [medium] Find all permutations of a string.\n- [medium] Find the longest substring without repeating characters.\n- [medium] Find the kth largest element in an array.\n- [medium] Given a matrix, find the number of islands.\n- [hard] Merge k sorted linked lists."
+      ],
+      "response": "Given a string, find the first non-repeating character in it and return its index. If no such character exists, return -1.",
+      "ground_truth": "A string manipulation question involving sliding window or hash map",
+      "rag_source": "preloaded",
+      "n_results": 5,
+      "topic_relevance": 1.0,
+      "context_faithfulness": 0.8,
+      "company_specificity": 0.6,
+      "reasoning": "The generated question is about strings, matching the topic. It also aligns with the medium difficulty level and style of the retrieved context, although it doesn't directly relate to any of the given examples. The question's specificity to Amazon is moderate, as string manipulation questions are common in Amazon interviews, but this particular question could be used in interviews for other companies as well."
+    }
+  ]
+}
