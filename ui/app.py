@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from agents.interview_graph import build_question_graph, build_answer_graph, create_initial_state
 from agents.study_plan_agent import generate_study_plan
 from memory.session_store import save_session, get_weak_areas, get_avg_score_by_topic
+from api.guardrails import check_injection
 
 load_dotenv()
 
@@ -45,7 +46,8 @@ INJECTION_KEYWORDS = [
 
 
 def is_injection(text: str) -> bool:
-    return any(k in text.lower() for k in INJECTION_KEYWORDS)
+    flagged, _ = check_injection(text, use_llm=False)  # fast keyword check in UI; LLM check in graph
+    return flagged
 
 
 @st.cache_resource

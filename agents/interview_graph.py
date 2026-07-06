@@ -1,3 +1,7 @@
+
+from langsmith import traceable
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = os.getenv("LANGCHAIN_TRACING_V2", "true")
 # agents/interview_graph.py
 from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph, END
@@ -8,6 +12,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from rag.retriever_v1 import retrieve_questions
 from api.evaluator import evaluate_answer
+from api.cache import get_cached_question, cache_question
+from api.guardrails import check_injection
 
 
 class InterviewState(TypedDict):
@@ -114,6 +120,7 @@ def _to_groq_messages(raw_messages: list) -> list:
 
 
 # ── Node 1: Retrieve context ───────────────────────────────────────────────────
+@traceable(name="retrieve_context")
 def retrieve_context_node(state: InterviewState) -> dict:
     difficulty = _get_difficulty(state)
     context = retrieve_questions(
@@ -130,6 +137,7 @@ def retrieve_context_node(state: InterviewState) -> dict:
 
 
 # ── Node 2: Generate question ──────────────────────────────────────────────────
+@traceable(name="generate_question")
 def generate_question_node(state: InterviewState) -> dict:
     from groq import Groq
     from dotenv import load_dotenv
@@ -148,9 +156,23 @@ def generate_question_node(state: InterviewState) -> dict:
 
     asked_str = "\n".join([f"- {q}" for q in asked]) if asked else "None yet."
 
+    # ── Cache check — return cached question if similar query seen recently ──
+    cached = get_cached_question(company, role, round_type, topic, difficulty)
+    if cached and cached.get("question") not in asked:
+        print(f"[cache] Returning cached question for {company} {round_type} {topic}")
+        question_text = cached["question"]
+        examples      = cached.get("examples", [])
+        return {
+            "current_question": question_text,
+            "current_examples": examples,
+            "question_number":  state["question_number"] + 1,
+            "asked_questions":  asked + [question_text],
+            "messages":         [{"role": "assistant", "content": question_text}]
+        }
+
     # Pick a RAG question that hasn't been asked yet as the seed
     unused_rag = [r for r in rag if r["question"] not in asked]
-    seed_question = unused_rag[0]["question"] if unused_rag else (rag[0]["question"] if rag else None)
+    seed_question = random.choice(unused_rag)["question"] if unused_rag else (random.choice(rag)["question"] if rag else None)
 
     if seed_question:
         # Variation mode — LLM must create a variant of a real DB question
@@ -220,16 +242,21 @@ For DSA: populate examples with 2 real pairs. Others: set examples to []."""
     question_text = result.get("question", raw)
     examples      = result.get("examples", [])
 
-    # Handle case where LLM returned nested JSON as the question string
-    if isinstance(question_text, str) and question_text.strip().startswith("{"):
-        try:
-            inner = json.loads(question_text)
-            if "question" in inner:
-                question_text = inner["question"]
-                if not examples:
-                    examples = inner.get("examples", [])
-        except Exception:
-            pass
+    # Handle nested JSON — LLM sometimes wraps the whole response inside "question" field
+    # Catches: {"question": "{\"question\": \"...\", ...}"} and {"question": "{ \"question\": ..."}
+    if isinstance(question_text, str):
+        stripped = question_text.strip()
+        if stripped.startswith("{") or stripped.startswith("```"):
+            try:
+                cleaned_inner = stripped.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+                inner = json.loads(cleaned_inner)
+                if isinstance(inner, dict) and "question" in inner:
+                    question_text = inner["question"]
+                    if not examples:
+                        examples = inner.get("examples", [])
+            except Exception:
+                # Not valid JSON — keep as-is, it might just start with { coincidentally
+                pass
 
     # DSA safety net — retry if examples missing
     if round_type == "DSA" and (not examples or len(examples) < 2):
@@ -264,6 +291,12 @@ Return:
             examples = retry_result.get("examples", examples)
         except Exception:
             pass
+
+    # Store in semantic cache for future sessions
+    cache_question(company, role, round_type, topic, difficulty, {
+        "question": question_text,
+        "examples": examples
+    })
 
     return {
         "current_question": question_text,
@@ -326,6 +359,7 @@ def handle_clarification_node(state: InterviewState) -> dict:
 
 
 # ── Node 5: Evaluate answer ────────────────────────────────────────────────────
+@traceable(name="evaluate_answer")
 def evaluate_answer_node(state: InterviewState) -> dict:
     evaluation = evaluate_answer(
         question=state["current_question"],

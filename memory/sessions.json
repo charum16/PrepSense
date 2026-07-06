@@ -107,5 +107,223 @@
     "weak_areas": [
       "binary search"
     ]
+  },
+  "default_user_Amazon_SWE": {
+    "sessions": [
+      {
+        "timestamp": "2026-07-06T15:52:01.425063",
+        "company": "Amazon",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's order processing system, given an array of order IDs, find two that sum to a target fraud threshold."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Amazon's product recommendation system, given an array of product IDs that a customer has viewed, find all duplicate product IDs to avoid recommending the same product multiple times to the customer"
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's inventory management system, given a 2D array representing the storage locations of products in a warehouse, where each cell contains the product ID and its corresponding quantity, find the maximum number of products that can be retrieved from the warehouse within a certain distance threshold from a given location, considering the warehouse as a grid and the distance as the Manhattan distance (L1 distance) between two points."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's Alexa voice assistant, given an array of song IDs that a user has recently played, find the first song ID that appears only once in the array, which will be used as the default song for the user's daily playlist"
+          },
+          {
+            "topic": "array",
+            "score": 6,
+            "question": "In Amazon's product review system, given an array of product ratings from various customers, find the average rating of the top 3 highest rated products to display on the product details page of Amazon Prime products"
+          }
+        ],
+        "avg_score": 3.4
+      },
+      {
+        "timestamp": "2026-07-06T15:52:15.139559",
+        "company": "Amazon",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's order processing system, given an array of order IDs, find two that sum to a target fraud threshold."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Amazon's product recommendation system, given an array of product IDs that a customer has viewed, find all duplicate product IDs to avoid recommending the same product multiple times to the customer"
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's inventory management system, given a 2D array representing the storage locations of products in a warehouse, where each cell contains the product ID and its corresponding quantity, find the maximum number of products that can be retrieved from the warehouse within a certain distance threshold from a given location, considering the warehouse as a grid and the distance as the Manhattan distance (L1 distance) between two points."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's Alexa voice assistant, given an array of song IDs that a user has recently played, find the first song ID that appears only once in the array, which will be used as the default song for the user's daily playlist"
+          },
+          {
+            "topic": "array",
+            "score": 6,
+            "question": "In Amazon's product review system, given an array of product ratings from various customers, find the average rating of the top 3 highest rated products to display on the product details page of Amazon Prime products"
+          }
+        ],
+        "avg_score": 3.4
+      },
+      {
+        "timestamp": "2026-07-06T15:52:20.196670",
+        "company": "Amazon",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's order processing system, given an array of order IDs, find two that sum to a target fraud threshold."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Amazon's product recommendation system, given an array of product IDs that a customer has viewed, find all duplicate product IDs to avoid recommending the same product multiple times to the customer"
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's inventory management system, given a 2D array representing the storage locations of products in a warehouse, where each cell contains the product ID and its corresponding quantity, find the maximum number of products that can be retrieved from the warehouse within a certain distance threshold from a given location, considering the warehouse as a grid and the distance as the Manhattan distance (L1 distance) between two points."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Amazon's Alexa voice assistant, given an array of song IDs that a user has recently played, find the first song ID that appears only once in the array, which will be used as the default song for the user's daily playlist"
+          },
+          {
+            "topic": "array",
+            "score": 6,
+            "question": "In Amazon's product review system, given an array of product ratings from various customers, find the average rating of the top 3 highest rated products to display on the product details page of Amazon Prime products"
+          }
+        ],
+        "avg_score": 3.4
+      }
+    ],
+    "weak_areas": [
+      "array"
+    ]
+  },
+  "default_user_Google_SWE": {
+    "sessions": [
+      {
+        "timestamp": "2026-07-06T20:16:57.288822",
+        "company": "Google",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related search queries based on the most frequent queries in a given list of search history. Write a function to find the top 3 most frequent search queries in a list of search history. The search history is represented as an array of strings."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Maps engineer, you need to optimize the route caching system to reduce the latency of map rendering. Given a large array of GPS coordinates representing the routes taken by users, write a function to find the longest contiguous subarray of coordinates that can be cached in memory, where the subarray must not exceed a maximum size of 1000 coordinates and the coordinates in the subarray must be within a certain threshold of each other (e.g., 100 meters). The function should return the start and end indices of the longest contiguous subarray."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google YouTube engineer, you need to develop an algorithm to find the maximum number of videos that can be displayed in a single row of the video recommendation carousel. The videos have varying widths, and the carousel has a fixed width. Given an array of video widths and the carousel width, write a function to determine the maximum number of videos that can fit in a single row. The function should return the maximum number of videos and the corresponding video indices."
+          },
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As a Google Drive engineer, you need to optimize the file preview system to reduce the latency of file rendering. Given an array of file sizes representing the files stored in a user's Drive account, write a function to find the maximum number of files that can be previewed simultaneously without exceeding a maximum memory limit of 1000 MB. The function should return the maximum number of files and the corresponding file indices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related product ads based on the most relevant product categories in a given list of search queries. Write a function to find the top 2 most relevant product categories in a list of search queries, where each query is associated with a product category. The search queries are represented as an array of pairs, where each pair contains the query and its corresponding product category."
+          }
+        ],
+        "avg_score": 4.4
+      },
+      {
+        "timestamp": "2026-07-06T20:17:04.540112",
+        "company": "Google",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related search queries based on the most frequent queries in a given list of search history. Write a function to find the top 3 most frequent search queries in a list of search history. The search history is represented as an array of strings."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Maps engineer, you need to optimize the route caching system to reduce the latency of map rendering. Given a large array of GPS coordinates representing the routes taken by users, write a function to find the longest contiguous subarray of coordinates that can be cached in memory, where the subarray must not exceed a maximum size of 1000 coordinates and the coordinates in the subarray must be within a certain threshold of each other (e.g., 100 meters). The function should return the start and end indices of the longest contiguous subarray."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google YouTube engineer, you need to develop an algorithm to find the maximum number of videos that can be displayed in a single row of the video recommendation carousel. The videos have varying widths, and the carousel has a fixed width. Given an array of video widths and the carousel width, write a function to determine the maximum number of videos that can fit in a single row. The function should return the maximum number of videos and the corresponding video indices."
+          },
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As a Google Drive engineer, you need to optimize the file preview system to reduce the latency of file rendering. Given an array of file sizes representing the files stored in a user's Drive account, write a function to find the maximum number of files that can be previewed simultaneously without exceeding a maximum memory limit of 1000 MB. The function should return the maximum number of files and the corresponding file indices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related product ads based on the most relevant product categories in a given list of search queries. Write a function to find the top 2 most relevant product categories in a list of search queries, where each query is associated with a product category. The search queries are represented as an array of pairs, where each pair contains the query and its corresponding product category."
+          }
+        ],
+        "avg_score": 4.4
+      },
+      {
+        "timestamp": "2026-07-06T20:17:10.503187",
+        "company": "Google",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related search queries based on the most frequent queries in a given list of search history. Write a function to find the top 3 most frequent search queries in a list of search history. The search history is represented as an array of strings."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As a Google Maps engineer, you need to optimize the route caching system to reduce the latency of map rendering. Given a large array of GPS coordinates representing the routes taken by users, write a function to find the longest contiguous subarray of coordinates that can be cached in memory, where the subarray must not exceed a maximum size of 1000 coordinates and the coordinates in the subarray must be within a certain threshold of each other (e.g., 100 meters). The function should return the start and end indices of the longest contiguous subarray."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google YouTube engineer, you need to develop an algorithm to find the maximum number of videos that can be displayed in a single row of the video recommendation carousel. The videos have varying widths, and the carousel has a fixed width. Given an array of video widths and the carousel width, write a function to determine the maximum number of videos that can fit in a single row. The function should return the maximum number of videos and the corresponding video indices."
+          },
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As a Google Drive engineer, you need to optimize the file preview system to reduce the latency of file rendering. Given an array of file sizes representing the files stored in a user's Drive account, write a function to find the maximum number of files that can be previewed simultaneously without exceeding a maximum memory limit of 1000 MB. The function should return the maximum number of files and the corresponding file indices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As a Google Search engineer, you need to implement a feature to suggest related product ads based on the most relevant product categories in a given list of search queries. Write a function to find the top 2 most relevant product categories in a list of search queries, where each query is associated with a product category. The search queries are represented as an array of pairs, where each pair contains the query and its corresponding product category."
+          }
+        ],
+        "avg_score": 4.4
+      }
+    ],
+    "weak_areas": [
+      "array"
+    ]
   }
 }

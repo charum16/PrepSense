@@ -1,3 +1,4 @@
+# api/evaluator.py — now wrapped with guardrails
 from groq import Groq
 from dotenv import load_dotenv
 import os
@@ -5,10 +6,11 @@ import json
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from api.guardrails import safe_evaluate, validate_eval_output
+
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Rubric varies by round type — different rounds need different evaluation criteria
 RUBRICS = {
     "DSA": [
         "Correct algorithm identified",
@@ -43,8 +45,13 @@ RUBRICS = {
     ]
 }
 
-def evaluate_answer(question: str, answer: str, round_type: str, topic: str) -> dict:
-    rubric = RUBRICS.get(round_type, RUBRICS["Technical"])
+
+def _raw_evaluate(question: str, answer: str, round_type: str, topic: str) -> dict:
+    """
+    Core evaluation logic — unchanged from original.
+    Called by safe_evaluate which handles validation + retry.
+    """
+    rubric     = RUBRICS.get(round_type, RUBRICS["Technical"])
     rubric_str = "\n".join([f"- {r}" for r in rubric])
 
     prompt = f"""You are evaluating a candidate's interview answer.
@@ -67,14 +74,14 @@ Respond in this exact JSON format only:
     "what_was_right": ["point 1", "point 2"],
     "what_was_missing": ["point 1", "point 2"],
     "improvement_tip": "one specific actionable tip",
-    "star_complete": <true/false, only for Behavioral rounds>
+    "star_complete": <true or false>
 }}"""
 
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
             {"role": "system", "content": "You are a strict but fair technical interviewer. Always respond in valid JSON only."},
-            {"role": "user", "content": prompt}
+            {"role": "user",   "content": prompt}
         ],
         temperature=0.3,
         max_tokens=600,
@@ -84,11 +91,11 @@ Respond in this exact JSON format only:
     raw = response.choices[0].message.content
     try:
         return json.loads(raw)
-    except:
+    except Exception:
         cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         try:
             return json.loads(cleaned)
-        except:
+        except Exception:
             return {
                 "score": 0,
                 "what_was_right": [],
@@ -97,8 +104,16 @@ Respond in this exact JSON format only:
                 "star_complete": False
             }
 
+
+def evaluate_answer(question: str, answer: str, round_type: str, topic: str) -> dict:
+    """
+    Public interface — wraps _raw_evaluate with guardrail validation + retry.
+    Always returns a valid dict with all required fields.
+    """
+    return safe_evaluate(_raw_evaluate, question, answer, round_type, topic)
+
+
 if __name__ == "__main__":
-    # Quick test
     result = evaluate_answer(
         question="Find two numbers in an array that sum to a target.",
         answer="I would use a hash map to store complements. For each number, check if target minus that number exists in the map. O(n) time, O(n) space.",
