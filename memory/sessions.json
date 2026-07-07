@@ -102,10 +102,147 @@
           }
         ],
         "avg_score": 3.8
+      },
+      {
+        "timestamp": "2026-07-07T03:54:39.083779",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "In Adobe Photoshop, when rendering images, we need to optimize the processing of image layers. Given an array of layer sizes, find the minimum number of layers that need to be merged to ensure that the total size of all layers does not exceed a certain threshold. The threshold is the average size of all layers multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Adobe Illustrator, when working with vector graphics, we need to process a list of brush strokes. Given an array of brush stroke lengths, find the maximum length of consecutive brush strokes that have a total length less than or equal to a certain limit, which is the maximum allowed length for a single action in the Creative Cloud interface."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe After Effects, when rendering video compositions, we need to optimize the processing of video frames. Given an array of frame sizes and a 2D array of dependencies between frames, where dependencies[i][0] and dependencies[i][1] represent two frames that need to be rendered together, find the minimum number of batches required to render all frames without exceeding the maximum batch size limit. The maximum batch size limit is the total size of all frames divided by the number of frames, multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Lightroom, when organizing photos, we need to categorize images based on their exposure levels. Given an array of exposure levels, find the longest subarray with a balanced exposure, where a balanced exposure is defined as the average exposure level of the subarray being within a certain threshold of the overall average exposure level. The threshold is 0.5."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Acrobat, when rendering PDF documents, we need to optimize the processing of page layouts. Given an array of page widths, find the minimum number of pages that need to be rearranged to ensure that the total width of all pages is evenly distributed across a certain number of columns. The number of columns is a given input."
+          }
+        ],
+        "avg_score": 2.6
+      },
+      {
+        "timestamp": "2026-07-07T03:54:54.756849",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "In Adobe Photoshop, when rendering images, we need to optimize the processing of image layers. Given an array of layer sizes, find the minimum number of layers that need to be merged to ensure that the total size of all layers does not exceed a certain threshold. The threshold is the average size of all layers multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Adobe Illustrator, when working with vector graphics, we need to process a list of brush strokes. Given an array of brush stroke lengths, find the maximum length of consecutive brush strokes that have a total length less than or equal to a certain limit, which is the maximum allowed length for a single action in the Creative Cloud interface."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe After Effects, when rendering video compositions, we need to optimize the processing of video frames. Given an array of frame sizes and a 2D array of dependencies between frames, where dependencies[i][0] and dependencies[i][1] represent two frames that need to be rendered together, find the minimum number of batches required to render all frames without exceeding the maximum batch size limit. The maximum batch size limit is the total size of all frames divided by the number of frames, multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Lightroom, when organizing photos, we need to categorize images based on their exposure levels. Given an array of exposure levels, find the longest subarray with a balanced exposure, where a balanced exposure is defined as the average exposure level of the subarray being within a certain threshold of the overall average exposure level. The threshold is 0.5."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Acrobat, when rendering PDF documents, we need to optimize the processing of page layouts. Given an array of page widths, find the minimum number of pages that need to be rearranged to ensure that the total width of all pages is evenly distributed across a certain number of columns. The number of columns is a given input."
+          }
+        ],
+        "avg_score": 2.6
+      },
+      {
+        "timestamp": "2026-07-07T03:54:56.171477",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "In Adobe Photoshop, when rendering images, we need to optimize the processing of image layers. Given an array of layer sizes, find the minimum number of layers that need to be merged to ensure that the total size of all layers does not exceed a certain threshold. The threshold is the average size of all layers multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Adobe Illustrator, when working with vector graphics, we need to process a list of brush strokes. Given an array of brush stroke lengths, find the maximum length of consecutive brush strokes that have a total length less than or equal to a certain limit, which is the maximum allowed length for a single action in the Creative Cloud interface."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe After Effects, when rendering video compositions, we need to optimize the processing of video frames. Given an array of frame sizes and a 2D array of dependencies between frames, where dependencies[i][0] and dependencies[i][1] represent two frames that need to be rendered together, find the minimum number of batches required to render all frames without exceeding the maximum batch size limit. The maximum batch size limit is the total size of all frames divided by the number of frames, multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Lightroom, when organizing photos, we need to categorize images based on their exposure levels. Given an array of exposure levels, find the longest subarray with a balanced exposure, where a balanced exposure is defined as the average exposure level of the subarray being within a certain threshold of the overall average exposure level. The threshold is 0.5."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Acrobat, when rendering PDF documents, we need to optimize the processing of page layouts. Given an array of page widths, find the minimum number of pages that need to be rearranged to ensure that the total width of all pages is evenly distributed across a certain number of columns. The number of columns is a given input."
+          }
+        ],
+        "avg_score": 2.6
+      },
+      {
+        "timestamp": "2026-07-07T03:55:01.637425",
+        "company": "Adobe",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "In Adobe Photoshop, when rendering images, we need to optimize the processing of image layers. Given an array of layer sizes, find the minimum number of layers that need to be merged to ensure that the total size of all layers does not exceed a certain threshold. The threshold is the average size of all layers multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "In Adobe Illustrator, when working with vector graphics, we need to process a list of brush strokes. Given an array of brush stroke lengths, find the maximum length of consecutive brush strokes that have a total length less than or equal to a certain limit, which is the maximum allowed length for a single action in the Creative Cloud interface."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe After Effects, when rendering video compositions, we need to optimize the processing of video frames. Given an array of frame sizes and a 2D array of dependencies between frames, where dependencies[i][0] and dependencies[i][1] represent two frames that need to be rendered together, find the minimum number of batches required to render all frames without exceeding the maximum batch size limit. The maximum batch size limit is the total size of all frames divided by the number of frames, multiplied by a given factor."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Lightroom, when organizing photos, we need to categorize images based on their exposure levels. Given an array of exposure levels, find the longest subarray with a balanced exposure, where a balanced exposure is defined as the average exposure level of the subarray being within a certain threshold of the overall average exposure level. The threshold is 0.5."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "In Adobe Acrobat, when rendering PDF documents, we need to optimize the processing of page layouts. Given an array of page widths, find the minimum number of pages that need to be rearranged to ensure that the total width of all pages is evenly distributed across a certain number of columns. The number of columns is a given input."
+          }
+        ],
+        "avg_score": 2.6
       }
     ],
     "weak_areas": [
-      "binary search"
+      "binary search",
+      "array"
     ]
   },
   "default_user_Amazon_SWE": {
