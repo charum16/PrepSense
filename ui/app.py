@@ -14,10 +14,11 @@ from api.guardrails import check_injection
 load_dotenv()
 
 st.set_page_config(
-    page_title="PrepSense",
-    page_icon="◆",
+    page_title="Study Buddy",
+    page_icon="🎓",
     layout="centered",
     initial_sidebar_state="collapsed"
+
 )
 
 st.markdown("""
@@ -43,7 +44,7 @@ h1, h2, h3 { color: #E6EDF3 !important; letter-spacing: -0.02em; }
 
 .ps-wordmark { display: flex; align-items: center; gap: 10px; padding: 28px 0 6px; }
 .ps-diamond { width: 28px; height: 28px; background: #6E56CF; transform: rotate(45deg); border-radius: 4px; flex-shrink: 0; }
-.ps-name { font-size: 18px; font-weight: 600; color: #E6EDF3; letter-spacing: -0.03em; }
+.ps-name { font-size: 24px; font-weight: 700; color: #E6EDF3; letter-spacing: 0.08em; }
 .ps-tagline { font-size: 12px; color: #7D8590; margin-top: 2px; letter-spacing: 0.01em; }
 
 .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 0; }
@@ -167,13 +168,12 @@ def score_symbol(score: int) -> str:
     if score >= 4: return "◐"
     return "○"
 
-
 def render_wordmark():
     st.markdown("""
     <div class="ps-wordmark">
-        <div class="ps-diamond"></div>
+        <span style="font-size:36px;line-height:1;">🎓</span>
         <div>
-            <div class="ps-name">PrepSense</div>
+            <div class="ps-name">STUDY BUDDY</div>
             <div class="ps-tagline">AI interview coach</div>
         </div>
     </div>

@@ -462,5 +462,114 @@
     "weak_areas": [
       "array"
     ]
+  },
+  "default_user_Uber_SWE": {
+    "sessions": [
+      {
+        "timestamp": "2026-07-07T14:39:54.156688",
+        "company": "Uber",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As an engineer working on Uber Eats, you need to determine if a list of restaurant IDs is in the same order as the user's previous orders. Given two arrays, one representing the list of restaurant IDs and the other representing the user's previous orders, check if the two arrays are identical when ignoring any duplicate IDs in the list of restaurant IDs."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As an engineer working on Uber's pricing algorithm, you need to find the maximum consecutive sum of prices in an array of ride prices. Given an array of integers representing the prices of rides, write a function to find the maximum sum of a subarray within the array, which represents the maximum consecutive sum of prices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's dispatch system, you need to optimize the assignment of drivers to trips. Given an array of driver IDs and an array of trip IDs, where each trip ID has a corresponding start and end location, find the optimal assignment of drivers to trips such that the total distance traveled by all drivers is minimized. The distance between two locations is calculated as the Euclidean distance. Assume that the number of drivers is equal to the number of trips."
+          },
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "As an engineer working on Uber's recommendation system, you need to find the first duplicate in an array of recently visited locations. Given an array of location IDs, write a function to find the first location ID that appears more than once in the array, which represents the first location that the user has visited before. If no such location exists, return null."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's music integration feature, you need to find the longest sequence of songs that a user has listened to in the same order. Given an array of song IDs representing the user's listening history and another array of song IDs representing the playlist, write a function to find the length of the longest common subsequence between the two arrays."
+          }
+        ],
+        "avg_score": 3.2
+      },
+      {
+        "timestamp": "2026-07-07T14:40:08.498381",
+        "company": "Uber",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As an engineer working on Uber Eats, you need to determine if a list of restaurant IDs is in the same order as the user's previous orders. Given two arrays, one representing the list of restaurant IDs and the other representing the user's previous orders, check if the two arrays are identical when ignoring any duplicate IDs in the list of restaurant IDs."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As an engineer working on Uber's pricing algorithm, you need to find the maximum consecutive sum of prices in an array of ride prices. Given an array of integers representing the prices of rides, write a function to find the maximum sum of a subarray within the array, which represents the maximum consecutive sum of prices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's dispatch system, you need to optimize the assignment of drivers to trips. Given an array of driver IDs and an array of trip IDs, where each trip ID has a corresponding start and end location, find the optimal assignment of drivers to trips such that the total distance traveled by all drivers is minimized. The distance between two locations is calculated as the Euclidean distance. Assume that the number of drivers is equal to the number of trips."
+          },
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "As an engineer working on Uber's recommendation system, you need to find the first duplicate in an array of recently visited locations. Given an array of location IDs, write a function to find the first location ID that appears more than once in the array, which represents the first location that the user has visited before. If no such location exists, return null."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's music integration feature, you need to find the longest sequence of songs that a user has listened to in the same order. Given an array of song IDs representing the user's listening history and another array of song IDs representing the playlist, write a function to find the length of the longest common subsequence between the two arrays."
+          }
+        ],
+        "avg_score": 3.2
+      },
+      {
+        "timestamp": "2026-07-07T14:40:15.070465",
+        "company": "Uber",
+        "role": "SWE",
+        "round_type": "DSA",
+        "scores": [
+          {
+            "topic": "array",
+            "score": 4,
+            "question": "As an engineer working on Uber Eats, you need to determine if a list of restaurant IDs is in the same order as the user's previous orders. Given two arrays, one representing the list of restaurant IDs and the other representing the user's previous orders, check if the two arrays are identical when ignoring any duplicate IDs in the list of restaurant IDs."
+          },
+          {
+            "topic": "array",
+            "score": 8,
+            "question": "As an engineer working on Uber's pricing algorithm, you need to find the maximum consecutive sum of prices in an array of ride prices. Given an array of integers representing the prices of rides, write a function to find the maximum sum of a subarray within the array, which represents the maximum consecutive sum of prices."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's dispatch system, you need to optimize the assignment of drivers to trips. Given an array of driver IDs and an array of trip IDs, where each trip ID has a corresponding start and end location, find the optimal assignment of drivers to trips such that the total distance traveled by all drivers is minimized. The distance between two locations is calculated as the Euclidean distance. Assume that the number of drivers is equal to the number of trips."
+          },
+          {
+            "topic": "array",
+            "score": 2,
+            "question": "As an engineer working on Uber's recommendation system, you need to find the first duplicate in an array of recently visited locations. Given an array of location IDs, write a function to find the first location ID that appears more than once in the array, which represents the first location that the user has visited before. If no such location exists, return null."
+          },
+          {
+            "topic": "array",
+            "score": 1,
+            "question": "As an engineer working on Uber's music integration feature, you need to find the longest sequence of songs that a user has listened to in the same order. Given an array of song IDs representing the user's listening history and another array of song IDs representing the playlist, write a function to find the length of the longest common subsequence between the two arrays."
+          }
+        ],
+        "avg_score": 3.2
+      }
+    ],
+    "weak_areas": [
+      "array"
+    ]
   }
 }
