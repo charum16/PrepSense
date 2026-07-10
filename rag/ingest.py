@@ -1,6 +1,3 @@
-# rag/ingest.py
-# Chunks JD corpus, embeds it, stores in persistent ChromaDB
-
 from sentence_transformers import SentenceTransformer
 import chromadb
 import os
