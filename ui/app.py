@@ -366,7 +366,7 @@ for k, v in defaults.items():
 
 render_wordmark()
 
-# ── Setup screen ───────────────────────────────────────────────────────────────
+
 if not st.session_state.setup_done:
     st.markdown('<div class="ps-divider"></div>', unsafe_allow_html=True)
     st.markdown('<p style="color:#7D8590;font-size:13px;margin-bottom:20px;">Configure your session below. PrepSense adapts difficulty and feedback to your performance.</p>', unsafe_allow_html=True)
