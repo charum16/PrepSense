@@ -1,13 +1,3 @@
-# api/guardrails.py
-# Day 6 — Guardrails: injection detection + evaluator output validation
-#
-# WHY GUARDRAILS?
-# Two failure modes we've already seen in production:
-# 1. Users typing "ignore previous instructions" → keyword matching is brittle
-#    A second LLM call classifies intent more robustly
-# 2. Evaluator returning malformed JSON or missing fields → app crashes
-#    Output validation + retry ensures the UI always gets a valid response
-
 import os
 import sys
 import json

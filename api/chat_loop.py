@@ -1,16 +1,3 @@
-# api/chat_loop.py
-# Day 4 — Multi-turn interview loop with difficulty progression
-#
-# Why session_history as a list of dicts?
-# The Groq API (and all OpenAI-compatible APIs) expect messages in
-# {"role": "...", "content": "..."} format. By maintaining this list
-# ourselves, we're manually implementing what LangChain's ConversationBuffer
-# does under the hood. Day 9 we replace this with LangGraph state.
-#
-# Why no scoring today?
-# Scoring = a second LLM call with a rubric prompt. We want the loop
-# skeleton solid before adding evaluation complexity. Premature complexity
-# is the #1 reason student projects break mid-build.
 
 from groq import Groq
 from dotenv import load_dotenv
